@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bestellen — Gouden Draak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/bestel.css" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       INLINE: CSS-only interacties
+       (checkbox trick voor winkelmandje &
+        :target trick voor login/beheer scherm)
+    ══════════════════════════════════════════ */
+
+    /* ── Verberg bestelsectie standaard ─────── */
+    #bestel-sectie {
+      display: block;
+    }
+
+    #login-section {
+      display: none;
+    }
+
+    #beheer-section {
+      display: none;
+    }
+
+    /* ── :target toont login of beheer ──────── */
+    #login-section:target {
+      display: flex;
+    }
+
+    #beheer-section:target {
+      display: block;
+    }
+
+    /* ── Actieve tab via :target ─────────────── */
+    #tab-menu:target~.beheer-content #panel-menu {
+      display: block;
+    }
+
+    #tab-info:target~.beheer-content #panel-info {
+      display: block;
+    }
+
+    #tab-users:target~.beheer-content #panel-users {
+      display: block;
+    }
+
+    /* standaard eerste tab zichtbaar */
+    #panel-menu {
+      display: block;
+    }
+
+    #panel-info {
+      display: none;
+    }
+
+    #panel-users {
+      display: none;
+    }
+
+    /* ── Checkbox winkelmandje ───────────────── */
+    /*
+       Elk gerecht heeft een verborgen checkbox.
+       Wanneer aangevinkt, verschijnt het item
+       in de winkelmandje kolom via CSS ~-selector.
+       Dit is de maximale interactiviteit zonder JS.
+    */
+
+    .item-checkbox {
+      display: none;
+    }
+
+    /* Verberg winkelmandje-versie standaard */
+    .cart-entry {
+      display: none;
+    }
+
+    /* Toon winkelmandje-versie als checkbox aan */
+    #cb-1:checked~main .cart-entry-1,
+    #cb-2:checked~main .cart-entry-2,
+    #cb-3:checked~main .cart-entry-3,
+    #cb-4:checked~main .cart-entry-4,
+    #cb-5:checked~main .cart-entry-5,
+    #cb-6:checked~main .cart-entry-6,
+    #cb-7:checked~main .cart-entry-7,
+    #cb-8:checked~main .cart-entry-8,
+    #cb-9:checked~main .cart-entry-9,
+    #cb-10:checked~main .cart-entry-10 {
+      display: flex;
+    }
+
+    /* Verberg "mandje leeg" als iets aangevinkt */
+    #cb-1:checked~main .cart-empty,
+    #cb-2:checked~main .cart-empty,
+    #cb-3:checked~main .cart-empty,
+    #cb-4:checked~main .cart-empty,
+    #cb-5:checked~main .cart-empty,
+    #cb-6:checked~main .cart-empty,
+    #cb-7:checked~main .cart-empty,
+    #cb-8:checked~main .cart-empty,
+    #cb-9:checked~main .cart-empty,
+    #cb-10:checked~main .cart-empty {
+      display: none;
+    }
+
+    /* Toon totaalbox als iets aangevinkt */
+    #cb-1:checked~main .cart-totaal,
+    #cb-2:checked~main .cart-totaal,
+    #cb-3:checked~main .cart-totaal,
+    #cb-4:checked~main .cart-totaal,
+    #cb-5:checked~main .cart-totaal,
+    #cb-6:checked~main .cart-totaal,
+    #cb-7:checked~main .cart-totaal,
+    #cb-8:checked~main .cart-totaal,
+    #cb-9:checked~main .cart-totaal,
+    #cb-10:checked~main .cart-totaal {
+      display: block;
+    }
+
+    /* Toon afrekenen sectie als iets aangevinkt */
+    #cb-1:checked~main .checkout-section,
+    #cb-2:checked~main .checkout-section,
+    #cb-3:checked~main .checkout-section,
+    #cb-4:checked~main .checkout-section,
+    #cb-5:checked~main .checkout-section,
+    #cb-6:checked~main .checkout-section,
+    #cb-7:checked~main .checkout-section,
+    #cb-8:checked~main .checkout-section,
+    #cb-9:checked~main .checkout-section,
+    #cb-10:checked~main .checkout-section {
+      display: block;
+    }
+
+    /* Aangevinkt: label kleur veranderen */
+    #cb-1:checked~main label[for="cb-1"],
+    #cb-2:checked~main label[for="cb-2"],
+    #cb-3:checked~main label[for="cb-3"],
+    #cb-4:checked~main label[for="cb-4"],
+    #cb-5:checked~main label[for="cb-5"],
+    #cb-6:checked~main label[for="cb-6"],
+    #cb-7:checked~main label[for="cb-7"],
+    #cb-8:checked~main label[for="cb-8"],
+    #cb-9:checked~main label[for="cb-9"],
+    #cb-10:checked~main label[for="cb-10"] {
+      background: var(--gold);
+      content: "✓";
+    }
+
+    /* checkout en totaal standaard verborgen */
+    .cart-totaal {
+      display: none;
+    }
+
+    .checkout-section {
+      display: none;
+    }
+
+    /* ── Beheer tab actief markering ─────────── */
+    a.beheer-tab-link:target {
+      background: var(--orange);
+      color: var(--white);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+    Verborgen checkboxen voor winkelmandje
+    (moeten BOVEN <main> staan voor CSS ~ selector)
+  -->
+  <input type="checkbox" class="item-checkbox" id="cb-1" />
+  <input type="checkbox" class="item-checkbox" id="cb-2" />
+  <input type="checkbox" class="item-checkbox" id="cb-3" />
+  <input type="checkbox" class="item-checkbox" id="cb-4" />
+  <input type="checkbox" class="item-checkbox" id="cb-5" />
+  <input type="checkbox" class="item-checkbox" id="cb-6" />
+  <input type="checkbox" class="item-checkbox" id="cb-7" />
+  <input type="checkbox" class="item-checkbox" id="cb-8" />
+  <input type="checkbox" class="item-checkbox" id="cb-9" />
+  <input type="checkbox" class="item-checkbox" id="cb-10" />
+
+
+  <!-- ════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════ -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">GuangzhouFoods</a>
+      <div class="header-actions">
+        <a href="#login-section" class="btn-secondary" style="font-size:0.85rem; padding:0.5rem 1.1rem;">🔐 Beheer</a>
+        <a href="#bestel-sectie" class="btn-primary">🛒 Winkelmandje</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ════════════════════════════════════════
+       HOOFDPAGINA — BESTELGEDEELTE
+  ════════════════════════════════════════ -->
+  <div id="bestel-sectie">
+    <main>
+
+      <!-- ── LINKER KOLOM: MENU ── -->
+      <section class="menu-section">
+
+        <div class="menu-hero">
+          <h1>Kies jouw gerecht</h1>
+          <p>Vers bereid, snel bezorgd — of haal af bij ons restaurant.</p>
+        </div>
+
+        <!-- Categorie anker-links -->
+        <nav class="cat-tabs" aria-label="Categorieën">
+          <a href="#cat-starters" class="cat-tab">Starters</a>
+          <a href="#cat-hoofd" class="cat-tab">Hoofdgerechten</a>
+          <a href="#cat-vegetarisch" class="cat-tab">Vegetarisch</a>
+          <a href="#cat-dranken" class="cat-tab">Dranken</a>
+        </nav>
+
+
+        <!-- ── STARTERS ── -->
+        <h2 class="category-title" id="cat-starters">Starters</h2>
+        <div class="items-grid">
+
+          <article class="item-card">
+            <div class="item-emoji">🥟</div>
+            <div class="item-body">
+              <h4>Dim Sum (6 stuks)</h4>
+              <p>Gestoomde dumplings met dipsaus</p>
+              <div class="item-footer">
+                <span class="item-price">€ 8,50</span>
+                <label for="cb-1" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <div class="item-emoji">🥗</div>
+            <div class="item-body">
+              <h4>Komkommersalade</h4>
+              <p>Met sesamolie en knoflook</p>
+              <div class="item-footer">
+                <span class="item-price">€ 5,50</span>
+                <label for="cb-2" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <div class="item-emoji">🍢</div>
+            <div class="item-body">
+              <h4>Loempia (2 stuks)</h4>
+              <p>Knapperige loempia met zoetzure saus</p>
+              <div class="item-footer">
+                <span class="item-price">€ 6,00</span>
+                <label for="cb-3" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+
+        <!-- ── HOOFDGERECHTEN ── -->
+        <h2 class="category-title" id="cat-hoofd">Hoofdgerechten</h2>
+        <div class="items-grid">
+
+          <article class="item-card">
+            <div class="item-emoji">🍜</div>
+            <div class="item-body">
+              <h4>Bami Goreng</h4>
+              <p>Gebakken noedels met groenten</p>
+              <div class="item-footer">
+                <span class="item-price">€ 10,50</span>
+                <label for="cb-4" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <div class="item-emoji">🍚</div>
+            <div class="item-body">
+              <h4>Nasi Goreng</h4>
+              <p>Gebakken rijst met ei en groenten</p>
+              <div class="item-footer">
+                <span class="item-price">€ 10,50</span>
+                <label for="cb-5" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <div class="item-emoji">🦐</div>
+            <div class="item-body">
+              <h4>Garnalen oestersaus</h4>
+              <p>Verse garnalen met peulvruchten</p>
+              <div class="item-footer">
+                <span class="item-price">€ 14,95</span>
+                <label for="cb-6" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <div class="item-emoji">🍗</div>
+            <div class="item-body">
+              <h4>Peking Eend</h4>
+              <p>Krokante eend met pannenkoekjes</p>
+              <div class="item-footer">
+                <span class="item-price">€ 18,50</span>
+                <label for="cb-7" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+
+        <!-- ── VEGETARISCH ── -->
+        <h2 class="category-title" id="cat-vegetarisch">Vegetarisch</h2>
+        <div class="items-grid">
+
+          <article class="item-card">
+            <div class="item-emoji">🥦</div>
+            <div class="item-body">
+              <h4>Roerbakgroenten</h4>
+              <p>Seizoensgroenten met teriyaki</p>
+              <div class="item-footer">
+                <span class="item-price">€ 9,50</span>
+                <label for="cb-8" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <div class="item-emoji">🍄</div>
+            <div class="item-body">
+              <h4>Tofu met paddenstoelen</h4>
+              <p>Zijdezachte tofu in gembersaus</p>
+              <div class="item-footer">
+                <span class="item-price">€ 11,00</span>
+                <label for="cb-9" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+
+        <!-- ── DRANKEN ── -->
+        <h2 class="category-title" id="cat-dranken">Dranken</h2>
+        <div class="items-grid">
+
+          <article class="item-card">
+            <div class="item-emoji">🧋</div>
+            <div class="item-body">
+              <h4>Bubble Tea Taro</h4>
+              <p>Zoet, romig met tapiocaparels</p>
+              <div class="item-footer">
+                <span class="item-price">€ 5,50</span>
+                <label for="cb-10" class="add-label">+</label>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </section><!-- einde menu-section -->
+
+
+      <!-- ── RECHTER KOLOM: WINKELMANDJE ── -->
+      <aside class="cart-panel">
+        <h2>🛒 Winkelmandje</h2>
+
+        <!-- Leeg bericht -->
+        <div class="cart-empty">
+          <div class="cart-empty-icon">🥡</div>
+          <p>Je mandje is nog leeg.<br />Voeg een gerecht toe!</p>
+        </div>
+
+        <!-- Winkelmandje items (verschijnen via checkbox CSS) -->
+        <ul class="cart-list">
+          <li class="cart-entry cart-entry-1">
+            <span class="cart-item-emoji">🥟</span>
+            <div class="cart-item-info">
+              <h5>Dim Sum</h5>
+              <span>€ 8,50</span>
+            </div>
+            <label for="cb-1" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
+          </li>
+          <li class="cart-entry cart-entry-2">
+            <span class="cart-item-emoji">🥗</span>
+            <div class="cart-item-info">
+              <h5>Komkommersalade</h5>
+              <span>€ 5,50</span>
+            </div>
+            <label for="cb-2" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
+          </li>
+          <li class="cart-entry cart-entry-3">
+            <span class="cart-item-emoji">🍢</span>
+            <div class="cart-item-info">
+              <h5>Loempia (2 stuks)</h5>
+              <span>€ 6,00</span>
+            </div>
+            <label for="cb-3" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
+          </li>
+          <li class="cart-entry cart-entry-4">
+            <span class="cart-item-emoji">🍜</span>
+            <div class="cart-item-info">
+              <h5>Bami Goreng</h5>
+              <span>€ 10,50</span>
+            </div>
+            <label for="cb-4" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
+          </li>
+          <li class="cart-entry cart-entry-5">
+            <span class="cart-item-emoji">🍚</span>
+            <div class="cart-item-info">
+              <h5>Nasi Goreng</h5>
+              <span>€ 10,50</span>
+            </div>
+            <label for="cb-5" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
+          </li>
+          <li class="cart-entry cart-entry-6">
+            <span class="cart-item-emoji">🦐</span>
+            <div class="cart-item-info">
+              <h5>Garnalen oestersaus</h5>
+              <span>€ 14,95</span>
+            </div>
+            <label for="cb-6" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
+          </li>
+          <li class="cart-entry cart-entry-7">
+            <span class="cart-item-emoji">🍗</span>
+            <div class="cart-item-info">
+              <h5>Peking Eend</h5>
+              <span>€ 18,50</span>
+            </div>
+            <label for="cb-7" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
+          </li>
+          <li class="cart-entry cart-entry-8">
+            <span class="cart-item-emoji">🥦</span>
+            <div class="cart-item-info">
+              <h5>Roerbakgroenten</h5>
+              <span>€ 9,50</span>
+            </div>
+            <label for="cb-8" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
+          </li>
+          <li class="cart-entry cart-entry-9">
+            <span class="cart-item-emoji">🍄</span>
+            <div class="cart-item-info">
+              <h5>Tofu met paddenstoelen</h5>
+              <span>€ 11,00</span>
+            </div>
+            <label for="cb-9" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
+          </li>
+          <li class="cart-entry cart-entry-10">
+            <span class="cart-item-emoji">🧋</span>
+            <div class="cart-item-info">
+              <h5>Bubble Tea Taro</h5>
+              <span>€ 5,50</span>
+            </div>
+            <label for="cb-10" style="cursor:pointer; color:var(--grey); font-size:1.1rem;"
+              title="Verwijderen">✕</label>
+          </li>
+        </ul>
+
+        <!-- Totaalbox -->
+        <div class="cart-totaal">
+          <div class="totaal-rij">
+            <span>Subtotaal</span>
+            <span>zie selectie</span>
+          </div>
+          <div class="totaal-rij">
+            <span>Bezorgkosten</span>
+            <span>€ 2,50</span>
+          </div>
+          <div class="totaal-rij eindtotaal">
+            <span>Totaal</span>
+            <span>incl. bezorgkosten</span>
+          </div>
+        </div>
+
+        <!-- Afrekenen formulier -->
+        <div class="checkout-section">
+          <h3>Jouw gegevens</h3>
+          <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+            <div class="form-group">
+              <label for="co-naam">Naam</label>
+              <input type="text" id="co-naam" name="naam" placeholder="Jouw naam" required />
+            </div>
+            <div class="form-group">
+              <label for="co-tel">Telefoon</label>
+              <input type="tel" id="co-tel" name="telefoon" placeholder="06 – ..." required />
+            </div>
+            <div class="form-group">
+              <label for="co-adres">Bezorgadres <small style="color:var(--grey)">(leeg = afhalen)</small></label>
+              <input type="text" id="co-adres" name="adres" placeholder="Straat + huisnummer" />
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%; padding:0.85rem; margin-top:0.5rem;">
+              Bestelling plaatsen
+            </button>
+          </form>
+        </div>
+
+      </aside>
+
+    </main>
+  </div><!-- einde #bestel-sectie -->
+
+
+  <!-- ════════════════════════════════════════
+       LOGIN SCHERM (via :target)
+  ════════════════════════════════════════ -->
+  <section id="login-section">
+    <div class="login-box">
+      <p class="login-logo">黄金 Gouden Draak</p>
+      <h2>Medewerkers login</h2>
+      <p>Exclusief voor personeel en eigenaar</p>
+
+      <!--
+        Puur HTML/CSS login:
+        Er is geen server-side verificatie mogelijk zonder JS/backend.
+        Dit formulier stuurt naar het beheer-scherm via een anker.
+        In productie koppel je dit aan een backend (PHP, Node, etc.)
+      -->
+      <form action="#beheer-section" method="get">
+        <div class="form-group">
+          <label for="login-user">Gebruikersnaam</label>
+          <input type="text" id="login-user" name="user" placeholder="gebruikersnaam" required />
+        </div>
+        <div class="form-group">
+          <label for="login-pass">Wachtwoord</label>
+          <input type="password" id="login-pass" name="pass" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%; padding:0.8rem;">
+          Inloggen
+        </button>
+      </form>
+
+      <p style="margin-top:1.2rem; font-size:0.82rem;">
+        <a href="#bestel-sectie" style="color:var(--orange);">← Terug naar bestellen</a>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       BEHEER PANEEL (via :target)
+  ════════════════════════════════════════ -->
+  <section id="beheer-section">
+    <div class="beheer-header">
+      <h2>🛠 Beheer paneel</h2>
+      <a href="#bestel-sectie" class="btn-secondary" style="font-size:0.85rem;">← Terug naar bestellen</a>
+    </div>
+
+    <!-- Tab navigatie via ankers -->
+    <nav class="beheer-tabs" aria-label="Beheer secties">
+      <a href="#panel-menu" class="beheer-tab btn-primary">Menu beheren</a>
+      <a href="#panel-info" class="beheer-tab btn-secondary">Restaurant info</a>
+      <a href="#panel-users" class="beheer-tab btn-secondary">Medewerkers</a>
+    </nav>
+
+    <div class="beheer-content">
+
+      <!-- ── MENU BEHEER ── -->
+      <div id="panel-menu">
+        <p style="font-size:0.88rem; color:var(--grey); margin-bottom:1.2rem;">
+          Overzicht van alle gerechten. Gebruik het formulier hieronder om een gerecht toe te voegen.
+        </p>
+
+        <!-- Bestaande gerechten (statisch overzicht) -->
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🥟</span>
+          <div class="beheer-item-info">
+            <h4>Dim Sum (6 stuks)</h4>
+            <span>Starters · Gestoomde dumplings met dipsaus</span>
+          </div>
+          <span class="beheer-item-prijs">€ 8,50</span>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🥗</span>
+          <div class="beheer-item-info">
+            <h4>Komkommersalade</h4>
+            <span>Starters · Met sesamolie en knoflook</span>
+          </div>
+          <span class="beheer-item-prijs">€ 5,50</span>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🍢</span>
+          <div class="beheer-item-info">
+            <h4>Loempia (2 stuks)</h4>
+            <span>Starters · Knapperige loempia met zoetzure saus</span>
+          </div>
+          <span class="beheer-item-prijs">€ 6,00</span>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🍜</span>
+          <div class="beheer-item-info">
+            <h4>Bami Goreng</h4>
+            <span>Hoofdgerechten · Gebakken noedels</span>
+          </div>
+          <span class="beheer-item-prijs">€ 10,50</span>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🍚</span>
+          <div class="beheer-item-info">
+            <h4>Nasi Goreng</h4>
+            <span>Hoofdgerechten · Gebakken rijst met ei</span>
+          </div>
+          <span class="beheer-item-prijs">€ 10,50</span>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🦐</span>
+          <div class="beheer-item-info">
+            <h4>Garnalen oestersaus</h4>
+            <span>Hoofdgerechten · Verse garnalen</span>
+          </div>
+          <span class="beheer-item-prijs">€ 14,95</span>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🍗</span>
+          <div class="beheer-item-info">
+            <h4>Peking Eend</h4>
+            <span>Hoofdgerechten · Krokante eend</span>
+          </div>
+          <span class="beheer-item-prijs">€ 18,50</span>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🥦</span>
+          <div class="beheer-item-info">
+            <h4>Roerbakgroenten</h4>
+            <span>Vegetarisch · Seizoensgroenten</span>
+          </div>
+          <span class="beheer-item-prijs">€ 9,50</span>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🍄</span>
+          <div class="beheer-item-info">
+            <h4>Tofu met paddenstoelen</h4>
+            <span>Vegetarisch · In gembersaus</span>
+          </div>
+          <span class="beheer-item-prijs">€ 11,00</span>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">🧋</span>
+          <div class="beheer-item-info">
+            <h4>Bubble Tea Taro</h4>
+            <span>Dranken · Met tapiocaparels</span>
+          </div>
+          <span class="beheer-item-prijs">€ 5,50</span>
+        </div>
+
+        <!-- Toevoegformulier — stuurt via mailto naar eigenaar -->
+        <div class="add-form-box">
+          <h4>➕ Nieuw gerecht aanvragen</h4>
+          <p style="font-size:0.82rem; margin-bottom:1rem;">
+            Vul het formulier in. De aanvraag wordt per e-mail verzonden naar de eigenaar.
+          </p>
+          <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="new-naam">Naam gerecht</label>
+                <input type="text" id="new-naam" name="naam" placeholder="Gerecht naam" required />
+              </div>
+              <div class="form-group">
+                <label for="new-prijs">Prijs (€)</label>
+                <input type="number" id="new-prijs" name="prijs" placeholder="0.00" step="0.01" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="new-cat">Categorie</label>
+                <input type="text" id="new-cat" name="categorie" placeholder="bv. Starters" />
+              </div>
+              <div class="form-group">
+                <label for="new-emoji">Emoji</label>
+                <input type="text" id="new-emoji" name="emoji" placeholder="🍽" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="new-desc">Beschrijving</label>
+              <input type="text" id="new-desc" name="beschrijving" placeholder="Korte omschrijving" />
+            </div>
+            <button type="submit" class="btn-primary">Aanvraag versturen</button>
+          </form>
+        </div>
+      </div><!-- einde panel-menu -->
+
+
+      <!-- ── RESTAURANT INFO ── -->
+      <div id="panel-info" style="display:none;">
+        <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+          <div class="form-group">
+            <label>Restaurantnaam</label>
+            <input type="text" name="naam" value="Gouden Draak" />
+          </div>
+          <div class="form-group">
+            <label>Openingstijden</label>
+            <input type="text" name="openingstijden" value="Ma–Vr: 11:00–22:00 | Za–Zo: 12:00–23:00" />
+          </div>
+          <div class="form-group">
+            <label>Bezorgkosten (€)</label>
+            <input type="number" name="bezorgkosten" value="2.50" step="0.10" />
+          </div>
+          <div class="form-group">
+            <label>Min. bestelbedrag (€)</label>
+            <input type="number" name="minimum" value="15.00" step="0.50" />
+          </div>
+          <div class="form-group">
+            <label>Bezorggebied (postcodes)</label>
+            <input type="text" name="postcodes" placeholder="bv. 3011, 3012, 3013" />
+          </div>
+          <button type="submit" class="btn-primary">Wijzigingen doorsturen</button>
+        </form>
+      </div>
+
+
+      <!-- ── MEDEWERKERS ── -->
+      <div id="panel-users" style="display:none;">
+        <p style="font-size:0.88rem; color:var(--grey); margin-bottom:1.2rem;">
+          Huidig personeel met toegang tot het beheer paneel.
+        </p>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">👤</span>
+          <div class="beheer-item-info">
+            <h4>eigenaar</h4>
+            <span>⭐ Eigenaar — volledige toegang</span>
+          </div>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">👤</span>
+          <div class="beheer-item-info">
+            <h4>chef</h4>
+            <span>Chef-kok — menu beheer</span>
+          </div>
+        </div>
+
+        <div class="beheer-item">
+          <span class="beheer-item-emoji">👤</span>
+          <div class="beheer-item-info">
+            <h4>medewerker</h4>
+            <span>Medewerker — bestellingen inzien</span>
+          </div>
+        </div>
+
+        <!-- Nieuw account aanvragen -->
+        <div class="add-form-box">
+          <h4>➕ Nieuw account aanvragen</h4>
+          <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="new-user">Gebruikersnaam</label>
+                <input type="text" id="new-user" name="gebruikersnaam" placeholder="naam" required />
+              </div>
+              <div class="form-group">
+                <label for="new-role">Rol</label>
+                <input type="text" id="new-role" name="rol" placeholder="bv. Medewerker" />
+              </div>
+            </div>
+            <button type="submit" class="btn-primary">Aanvraag versturen</button>
+          </form>
+        </div>
+      </div>
+
+    </div><!-- einde beheer-content -->
+  </section><!-- einde #beheer-section -->
+
+</body>
+
+</html>
