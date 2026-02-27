@@ -21,16 +21,25 @@
   ════════════════════════════════════════ -->
   <header>
     <div class="header-inner">
-      <a href="#home" class="logo">GuangzhouFoods</a>
-      <nav>
-        <a href="#over-ons">Over ons</a>
-        <a href="#menu">Menu</a>
-        <a href="#contact">Contact</a>
-        <a href="bestel.html" class="btn-primary">Bestel nu</a>
+
+      <a href="#home" class="logo">
+        廣州 <span>Guangzhou Foods</span>
+      </a>
+
+      <!-- Hamburger -->
+      <button class="header__hamburger" aria-expanded="false" aria-label="Menu openen">☰</button>
+
+      <nav class="header__nav">
+        <ul class="header-links">
+          <li><a href="#over-ons" class="header__nav-link">Over ons</a></li>
+          <li><a href="#menu" class="header__nav-link">Menu</a></li>
+          <li><a href="#contact" class="header__nav-link">Contact</a></li>
+          <li><a href="bestel.html" class="btn-primary header__nav-link">Bestel nu</a></li>
+        </ul>
       </nav>
+
     </div>
   </header>
-
 
   <!-- ════════════════════════════════════════
        HERO / LANDINGPAGE
@@ -314,6 +323,7 @@
     </div>
   </footer>
 
+  <script src="../js/nav.js"></script>
 </body>
 
 </html>

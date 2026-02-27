@@ -9,6 +9,17 @@ nav {
   align-items: center;
 }
 
+.header-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.header-links li {
+  all: unset;
+}
+
 nav a {
   color: var(--grey);
   font-size: 0.9rem;
@@ -19,6 +30,7 @@ nav a {
 nav a:hover {
   color: var(--orange);
 }
+
 
 /* ── HERO ────────────────────────────────────── */
 .hero {
@@ -323,6 +335,57 @@ nav a:hover {
   margin-bottom: 1.5rem;
 }
 
+/* Hamburger standaard uit */
+.header__hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  color: var(--dark);
+}
+
+/* Actieve nav link */
+.header__nav-link.active {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+
+  /* Hamburger tonen */
+  .header__hamburger {
+    display: block;
+  }
+
+  /* Menu verbergen */
+  .header__nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  /* JS klasse → menu tonen */
+  .header__nav--open {
+    display: block;
+  }
+
+  /* Links onder elkaar */
+  .header-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+
 /* ── RESPONSIEF ──────────────────────────────── */
 @media (max-width: 900px) {
   .about-inner {
@@ -339,10 +402,6 @@ nav a:hover {
 }
 
 @media (max-width: 640px) {
-  nav a:not(.btn-primary) {
-    display: none;
-  }
-
   .cards-grid {
     grid-template-columns: 1fr;
   }
