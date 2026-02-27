@@ -219,6 +219,12 @@
           <p>Vers bereid, snel bezorgd — of haal af bij ons restaurant.</p>
         </div>
 
+        <!-- Zoekbalk -->
+        <div class="zoekbalk-wrapper">
+          <span class="zoekbalk-icon">🔍</span>
+          <input type="search" class="zoekbalk" placeholder="Zoek een gerecht..." aria-label="Zoeken" />
+        </div>
+
         <!-- Categorie anker-links -->
         <nav class="cat-tabs" aria-label="Categorieën">
           <a href="#cat-starters" class="cat-tab">Starters</a>
@@ -785,6 +791,31 @@
     </div><!-- einde beheer-content -->
   </section><!-- einde #beheer-section -->
 
+  <script>
+    const zoekbalk = document.querySelector('.zoekbalk');
+
+    zoekbalk.addEventListener('input', function () {
+      const query = this.value.toLowerCase().trim();
+
+      // Filter gerecht kaarten
+      document.querySelectorAll('.item-card').forEach(function (card) {
+        const naam = card.querySelector('h4').textContent.toLowerCase();
+        const desc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
+        card.style.display = (naam.includes(query) || desc.includes(query)) ? '' : 'none';
+      });
+
+      // Verberg categorietitel + grid als alle items erin verborgen zijn
+      document.querySelectorAll('.items-grid').forEach(function (grid) {
+        const aantalZichtbaar = Array.from(grid.querySelectorAll('.item-card'))
+          .filter(c => c.style.display !== 'none').length;
+        const titel = grid.previousElementSibling;
+        if (titel && titel.classList.contains('category-title')) {
+          titel.style.display = aantalZichtbaar === 0 ? 'none' : '';
+        }
+        grid.style.display = aantalZichtbaar === 0 ? 'none' : '';
+      });
+    });
+  </script>
 </body>
 
 </html>
