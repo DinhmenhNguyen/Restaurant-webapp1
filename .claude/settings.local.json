@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:api.unsplash.com)",
+      "WebFetch(domain:awik.io)",
+      "WebFetch(domain:dev.to)",
+      "Bash(curl:*)",
+      "Bash(do:*)",
+      "Bash(echo === $slug ===:*)"
     ]
   }
 }
