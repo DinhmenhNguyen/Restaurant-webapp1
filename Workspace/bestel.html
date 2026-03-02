@@ -68,93 +68,6 @@
       display: none;
     }
 
-    /* ── Checkbox winkelmandje ───────────────── */
-    /*
-       Elk gerecht heeft een verborgen checkbox.
-       Wanneer aangevinkt, verschijnt het item
-       in de winkelmandje kolom via CSS ~-selector.
-       Dit is de maximale interactiviteit zonder JS.
-    */
-
-    .item-checkbox {
-      display: none;
-    }
-
-    /* Verberg winkelmandje-versie standaard */
-    .cart-entry {
-      display: none;
-    }
-
-    /* Toon winkelmandje-versie als checkbox aan */
-    #cb-1:checked~main .cart-entry-1,
-    #cb-2:checked~main .cart-entry-2,
-    #cb-3:checked~main .cart-entry-3,
-    #cb-4:checked~main .cart-entry-4,
-    #cb-5:checked~main .cart-entry-5,
-    #cb-6:checked~main .cart-entry-6,
-    #cb-7:checked~main .cart-entry-7,
-    #cb-8:checked~main .cart-entry-8,
-    #cb-9:checked~main .cart-entry-9,
-    #cb-10:checked~main .cart-entry-10 {
-      display: flex;
-    }
-
-    /* Verberg "mandje leeg" als iets aangevinkt */
-    #cb-1:checked~main .cart-empty,
-    #cb-2:checked~main .cart-empty,
-    #cb-3:checked~main .cart-empty,
-    #cb-4:checked~main .cart-empty,
-    #cb-5:checked~main .cart-empty,
-    #cb-6:checked~main .cart-empty,
-    #cb-7:checked~main .cart-empty,
-    #cb-8:checked~main .cart-empty,
-    #cb-9:checked~main .cart-empty,
-    #cb-10:checked~main .cart-empty {
-      display: none;
-    }
-
-    /* Toon totaalbox als iets aangevinkt */
-    #cb-1:checked~main .cart-totaal,
-    #cb-2:checked~main .cart-totaal,
-    #cb-3:checked~main .cart-totaal,
-    #cb-4:checked~main .cart-totaal,
-    #cb-5:checked~main .cart-totaal,
-    #cb-6:checked~main .cart-totaal,
-    #cb-7:checked~main .cart-totaal,
-    #cb-8:checked~main .cart-totaal,
-    #cb-9:checked~main .cart-totaal,
-    #cb-10:checked~main .cart-totaal {
-      display: block;
-    }
-
-    /* Toon afrekenen sectie als iets aangevinkt */
-    #cb-1:checked~main .checkout-section,
-    #cb-2:checked~main .checkout-section,
-    #cb-3:checked~main .checkout-section,
-    #cb-4:checked~main .checkout-section,
-    #cb-5:checked~main .checkout-section,
-    #cb-6:checked~main .checkout-section,
-    #cb-7:checked~main .checkout-section,
-    #cb-8:checked~main .checkout-section,
-    #cb-9:checked~main .checkout-section,
-    #cb-10:checked~main .checkout-section {
-      display: block;
-    }
-
-    /* Aangevinkt: label kleur veranderen */
-    #cb-1:checked~main label[for="cb-1"],
-    #cb-2:checked~main label[for="cb-2"],
-    #cb-3:checked~main label[for="cb-3"],
-    #cb-4:checked~main label[for="cb-4"],
-    #cb-5:checked~main label[for="cb-5"],
-    #cb-6:checked~main label[for="cb-6"],
-    #cb-7:checked~main label[for="cb-7"],
-    #cb-8:checked~main label[for="cb-8"],
-    #cb-9:checked~main label[for="cb-9"],
-    #cb-10:checked~main label[for="cb-10"] {
-      background: var(--gold);
-      content: "✓";
-    }
 
     /* checkout en totaal standaard verborgen */
     .cart-totaal {
@@ -174,21 +87,6 @@
 </head>
 
 <body>
-
-  <!--
-    Verborgen checkboxen voor winkelmandje
-    (moeten BOVEN <main> staan voor CSS ~ selector)
-  -->
-  <input type="checkbox" class="item-checkbox" id="cb-1" />
-  <input type="checkbox" class="item-checkbox" id="cb-2" />
-  <input type="checkbox" class="item-checkbox" id="cb-3" />
-  <input type="checkbox" class="item-checkbox" id="cb-4" />
-  <input type="checkbox" class="item-checkbox" id="cb-5" />
-  <input type="checkbox" class="item-checkbox" id="cb-6" />
-  <input type="checkbox" class="item-checkbox" id="cb-7" />
-  <input type="checkbox" class="item-checkbox" id="cb-8" />
-  <input type="checkbox" class="item-checkbox" id="cb-9" />
-  <input type="checkbox" class="item-checkbox" id="cb-10" />
 
 
   <!-- ════════════════════════════════════════
@@ -245,7 +143,7 @@
               <p>Gestoomde dumplings met dipsaus</p>
               <div class="item-footer">
                 <span class="item-price">€ 8,50</span>
-                <label for="cb-1" class="add-label">+</label>
+                <button class="add-btn" data-item="1">+</button>
               </div>
             </div>
           </article>
@@ -254,10 +152,10 @@
             <div class="item-emoji">🥗</div>
             <div class="item-body">
               <h4>Komkommersalade</h4>
-              <p>Met sesamolie en knoflook</p>
+              <p>Met sesamolie en verse knoflook</p>
               <div class="item-footer">
                 <span class="item-price">€ 5,50</span>
-                <label for="cb-2" class="add-label">+</label>
+                <button class="add-btn" data-item="2">+</button>
               </div>
             </div>
           </article>
@@ -269,7 +167,7 @@
               <p>Knapperige loempia met zoetzure saus</p>
               <div class="item-footer">
                 <span class="item-price">€ 6,00</span>
-                <label for="cb-3" class="add-label">+</label>
+                <button class="add-btn" data-item="3">+</button>
               </div>
             </div>
           </article>
@@ -288,7 +186,7 @@
               <p>Gebakken noedels met groenten</p>
               <div class="item-footer">
                 <span class="item-price">€ 10,50</span>
-                <label for="cb-4" class="add-label">+</label>
+                <button class="add-btn" data-item="4">+</button>
               </div>
             </div>
           </article>
@@ -300,7 +198,7 @@
               <p>Gebakken rijst met ei en groenten</p>
               <div class="item-footer">
                 <span class="item-price">€ 10,50</span>
-                <label for="cb-5" class="add-label">+</label>
+                <button class="add-btn" data-item="5">+</button>
               </div>
             </div>
           </article>
@@ -312,7 +210,7 @@
               <p>Verse garnalen met peulvruchten</p>
               <div class="item-footer">
                 <span class="item-price">€ 14,95</span>
-                <label for="cb-6" class="add-label">+</label>
+                <button class="add-btn" data-item="6">+</button>
               </div>
             </div>
           </article>
@@ -324,7 +222,7 @@
               <p>Krokante eend met pannenkoekjes</p>
               <div class="item-footer">
                 <span class="item-price">€ 18,50</span>
-                <label for="cb-7" class="add-label">+</label>
+                <button class="add-btn" data-item="7">+</button>
               </div>
             </div>
           </article>
@@ -343,7 +241,7 @@
               <p>Seizoensgroenten met teriyaki</p>
               <div class="item-footer">
                 <span class="item-price">€ 9,50</span>
-                <label for="cb-8" class="add-label">+</label>
+                <button class="add-btn" data-item="8">+</button>
               </div>
             </div>
           </article>
@@ -355,7 +253,7 @@
               <p>Zijdezachte tofu in gembersaus</p>
               <div class="item-footer">
                 <span class="item-price">€ 11,00</span>
-                <label for="cb-9" class="add-label">+</label>
+                <button class="add-btn" data-item="9">+</button>
               </div>
             </div>
           </article>
@@ -374,7 +272,7 @@
               <p>Zoet, romig met tapiocaparels</p>
               <div class="item-footer">
                 <span class="item-price">€ 5,50</span>
-                <label for="cb-10" class="add-label">+</label>
+                <button class="add-btn" data-item="10">+</button>
               </div>
             </div>
           </article>
@@ -394,96 +292,14 @@
           <p>Je mandje is nog leeg.<br />Voeg een gerecht toe!</p>
         </div>
 
-        <!-- Winkelmandje items (verschijnen via checkbox CSS) -->
-        <ul class="cart-list">
-          <li class="cart-entry cart-entry-1">
-            <span class="cart-item-emoji">🥟</span>
-            <div class="cart-item-info">
-              <h5>Dim Sum</h5>
-              <span>€ 8,50</span>
-            </div>
-            <label for="cb-1" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
-          </li>
-          <li class="cart-entry cart-entry-2">
-            <span class="cart-item-emoji">🥗</span>
-            <div class="cart-item-info">
-              <h5>Komkommersalade</h5>
-              <span>€ 5,50</span>
-            </div>
-            <label for="cb-2" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
-          </li>
-          <li class="cart-entry cart-entry-3">
-            <span class="cart-item-emoji">🍢</span>
-            <div class="cart-item-info">
-              <h5>Loempia (2 stuks)</h5>
-              <span>€ 6,00</span>
-            </div>
-            <label for="cb-3" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
-          </li>
-          <li class="cart-entry cart-entry-4">
-            <span class="cart-item-emoji">🍜</span>
-            <div class="cart-item-info">
-              <h5>Bami Goreng</h5>
-              <span>€ 10,50</span>
-            </div>
-            <label for="cb-4" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
-          </li>
-          <li class="cart-entry cart-entry-5">
-            <span class="cart-item-emoji">🍚</span>
-            <div class="cart-item-info">
-              <h5>Nasi Goreng</h5>
-              <span>€ 10,50</span>
-            </div>
-            <label for="cb-5" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
-          </li>
-          <li class="cart-entry cart-entry-6">
-            <span class="cart-item-emoji">🦐</span>
-            <div class="cart-item-info">
-              <h5>Garnalen oestersaus</h5>
-              <span>€ 14,95</span>
-            </div>
-            <label for="cb-6" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
-          </li>
-          <li class="cart-entry cart-entry-7">
-            <span class="cart-item-emoji">🍗</span>
-            <div class="cart-item-info">
-              <h5>Peking Eend</h5>
-              <span>€ 18,50</span>
-            </div>
-            <label for="cb-7" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
-          </li>
-          <li class="cart-entry cart-entry-8">
-            <span class="cart-item-emoji">🥦</span>
-            <div class="cart-item-info">
-              <h5>Roerbakgroenten</h5>
-              <span>€ 9,50</span>
-            </div>
-            <label for="cb-8" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
-          </li>
-          <li class="cart-entry cart-entry-9">
-            <span class="cart-item-emoji">🍄</span>
-            <div class="cart-item-info">
-              <h5>Tofu met paddenstoelen</h5>
-              <span>€ 11,00</span>
-            </div>
-            <label for="cb-9" style="cursor:pointer; color:var(--grey); font-size:1.1rem;" title="Verwijderen">✕</label>
-          </li>
-          <li class="cart-entry cart-entry-10">
-            <span class="cart-item-emoji">🧋</span>
-            <div class="cart-item-info">
-              <h5>Bubble Tea Taro</h5>
-              <span>€ 5,50</span>
-            </div>
-            <label for="cb-10" style="cursor:pointer; color:var(--grey); font-size:1.1rem;"
-              title="Verwijderen">✕</label>
-          </li>
-        </ul>
+        <!-- Winkelmandje items (dynamisch gevuld door JavaScript) -->
+        <ul class="cart-list" id="cart-items"></ul>
 
         <!-- Totaalbox -->
         <div class="cart-totaal">
           <div class="totaal-rij">
             <span>Subtotaal</span>
-            <span>zie selectie</span>
+            <span id="cart-subtotaal">€ 0,00</span>
           </div>
           <div class="totaal-rij">
             <span>Bezorgkosten</span>
@@ -491,7 +307,7 @@
           </div>
           <div class="totaal-rij eindtotaal">
             <span>Totaal</span>
-            <span>incl. bezorgkosten</span>
+            <span id="cart-eindtotaal">€ 2,50</span>
           </div>
         </div>
 
@@ -597,7 +413,7 @@
           <span class="beheer-item-emoji">🥗</span>
           <div class="beheer-item-info">
             <h4>Komkommersalade</h4>
-            <span>Starters · Met sesamolie en knoflook</span>
+            <span>Starters · Met sesamolie en verse knoflook</span>
           </div>
           <span class="beheer-item-prijs">€ 5,50</span>
         </div>
@@ -792,23 +608,115 @@
   </section><!-- einde #beheer-section -->
 
   <script>
-    const zoekbalk = document.querySelector('.zoekbalk');
+    // ── WINKELMANDJE ────────────────────────────────────
+    var cart = {};
+    var itemData = {};
 
+    // Lees gerecht-data uit de DOM
+    document.querySelectorAll('.item-card').forEach(function (card) {
+      var btn = card.querySelector('.add-btn');
+      if (!btn) return;
+      var id = btn.dataset.item;
+      var naam = card.querySelector('h4').textContent.trim();
+      var prijsText = card.querySelector('.item-price').textContent.replace('€', '').replace(',', '.').trim();
+      var emoji = card.querySelector('.item-emoji').textContent.trim();
+      itemData[id] = { naam: naam, prijs: parseFloat(prijsText), emoji: emoji };
+    });
+
+    // Klik op + knop
+    document.querySelectorAll('.add-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = this.dataset.item;
+        cart[id] = (cart[id] || 0) + 1;
+        renderCart();
+      });
+    });
+
+    function changeQty(id, delta) {
+      cart[id] = (cart[id] || 0) + delta;
+      if (cart[id] <= 0) delete cart[id];
+      renderCart();
+    }
+
+    function removeItem(id) {
+      delete cart[id];
+      renderCart();
+    }
+
+    function renderCart() {
+      var cartItems = document.getElementById('cart-items');
+      var cartEmpty = document.querySelector('.cart-empty');
+      var cartTotaal = document.querySelector('.cart-totaal');
+      var checkoutSection = document.querySelector('.checkout-section');
+      var actieveIds = Object.keys(cart).filter(function (id) { return cart[id] > 0; });
+
+      if (actieveIds.length === 0) {
+        cartEmpty.style.display = '';
+        cartTotaal.style.display = 'none';
+        checkoutSection.style.display = 'none';
+        cartItems.innerHTML = '';
+        updateAddBtns();
+        return;
+      }
+
+      cartEmpty.style.display = 'none';
+      cartTotaal.style.display = 'block';
+      checkoutSection.style.display = 'block';
+
+      var subtotaal = 0;
+      cartItems.innerHTML = actieveIds.map(function (id) {
+        var item = itemData[id];
+        var qty = cart[id];
+        subtotaal += item.prijs * qty;
+        var prijsStr = (item.prijs * qty).toFixed(2).replace('.', ',');
+        var qtyLabel = qty > 1 ? ' <em class="cart-qty-label">&times;' + qty + '</em>' : '';
+        return '<li class="cart-item">'
+          + '<span class="cart-item-emoji">' + item.emoji + '</span>'
+          + '<div class="cart-item-info">'
+          + '<h5>' + item.naam + '</h5>'
+          + '<span class="cart-item-prijs">€ ' + prijsStr + qtyLabel + '</span>'
+          + '</div>'
+          + '<div class="cart-item-actions">'
+          + '<button class="cart-qty-btn" onclick="changeQty(' + id + ', -1)">&#8722;</button>'
+          + '<span class="cart-qty-num">' + qty + '</span>'
+          + '<button class="cart-qty-btn" onclick="changeQty(' + id + ', 1)">+</button>'
+          + '<button class="cart-remove-btn" onclick="removeItem(' + id + ')" title="Verwijderen">&times;</button>'
+          + '</div>'
+          + '</li>';
+      }).join('');
+
+      document.getElementById('cart-subtotaal').textContent = '€ ' + subtotaal.toFixed(2).replace('.', ',');
+      document.getElementById('cart-eindtotaal').textContent = '€ ' + (subtotaal + 2.50).toFixed(2).replace('.', ',');
+      updateAddBtns();
+    }
+
+    function updateAddBtns() {
+      document.querySelectorAll('.add-btn').forEach(function (btn) {
+        var id = btn.dataset.item;
+        var qty = cart[id] || 0;
+        if (qty > 0) {
+          btn.classList.add('add-btn--active');
+          btn.textContent = qty;
+        } else {
+          btn.classList.remove('add-btn--active');
+          btn.textContent = '+';
+        }
+      });
+    }
+
+    // ── ZOEKBALK ─────────────────────────────────────────
+    var zoekbalk = document.querySelector('.zoekbalk');
     zoekbalk.addEventListener('input', function () {
-      const query = this.value.toLowerCase().trim();
-
-      // Filter gerecht kaarten
+      var query = this.value.toLowerCase().trim();
       document.querySelectorAll('.item-card').forEach(function (card) {
-        const naam = card.querySelector('h4').textContent.toLowerCase();
-        const desc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
+        var naam = card.querySelector('h4').textContent.toLowerCase();
+        var desc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
         card.style.display = (naam.includes(query) || desc.includes(query)) ? '' : 'none';
       });
-
-      // Verberg categorietitel + grid als alle items erin verborgen zijn
       document.querySelectorAll('.items-grid').forEach(function (grid) {
-        const aantalZichtbaar = Array.from(grid.querySelectorAll('.item-card'))
-          .filter(c => c.style.display !== 'none').length;
-        const titel = grid.previousElementSibling;
+        var aantalZichtbaar = Array.from(grid.querySelectorAll('.item-card'))
+          .filter(function (c) { return c.style.display !== 'none'; }).length;
+        var titel = grid.previousElementSibling;
         if (titel && titel.classList.contains('category-title')) {
           titel.style.display = aantalZichtbaar === 0 ? 'none' : '';
         }
