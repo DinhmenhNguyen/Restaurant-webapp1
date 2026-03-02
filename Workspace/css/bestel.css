@@ -553,6 +553,18 @@ main {
   margin-bottom: 0.5rem;
 }
 
+/* ── HAMBURGER (bestel) — standaard verborgen ── */
+.header__hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  color: var(--dark);
+}
+
 /* ── RESPONSIEF ──────────────────────────────── */
 @media (max-width: 960px) {
   main {
@@ -571,5 +583,33 @@ main {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hamburger tonen */
+  .header__hamburger {
+    display: block;
+  }
+
+  /* Acties verbergen */
+  .header-actions {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 1rem;
+    background: var(--white);
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    flex-direction: column;
+    gap: 0.8rem;
+    min-width: 180px;
+    z-index: 200;
+  }
+
+  /* Acties tonen via JS klasse */
+  .header-actions--open {
+    display: flex;
   }
 }

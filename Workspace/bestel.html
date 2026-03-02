@@ -95,6 +95,7 @@
   <header>
     <div class="header-inner">
       <a href="index.html" class="logo">廣州 <span>Guangzhou Foods</span></a>
+      <button class="header__hamburger" aria-expanded="false" aria-label="Menu openen">☰</button>
       <div class="header-actions">
         <a href="#login-section" class="btn-secondary" style="font-size:0.85rem; padding:0.5rem 1.1rem;">🔐 Beheer</a>
         <a href="#bestel-sectie" class="btn-primary">🛒 Winkelmandje</a>
@@ -723,6 +724,26 @@
         grid.style.display = aantalZichtbaar === 0 ? 'none' : '';
       });
     });
+
+    // ── HAMBURGER MENU — bestel.html ─────────────────────
+    var bestelHamburger = document.querySelector('.header__hamburger');
+    var bestelActions = document.querySelector('.header-actions');
+
+    if (bestelHamburger && bestelActions) {
+      bestelHamburger.addEventListener('click', function () {
+        var isOpen = bestelActions.classList.toggle('header-actions--open');
+        bestelHamburger.setAttribute('aria-expanded', String(isOpen));
+        bestelHamburger.textContent = isOpen ? '✕' : '☰';
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!bestelHamburger.contains(e.target) && !bestelActions.contains(e.target)) {
+          bestelActions.classList.remove('header-actions--open');
+          bestelHamburger.setAttribute('aria-expanded', 'false');
+          bestelHamburger.textContent = '☰';
+        }
+      });
+    }
   </script>
 </body>
 
