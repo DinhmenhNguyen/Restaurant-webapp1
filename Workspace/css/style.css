@@ -185,6 +185,11 @@ a {
   color: var(--gold);
 }
 
+/* ── HAMBURGER CHECKBOX (altijd verborgen) ───── */
+.nav-toggle-input {
+  display: none;
+}
+
 /* ── HEADER ──────────────────────────────────── */
 header {
   position: sticky;

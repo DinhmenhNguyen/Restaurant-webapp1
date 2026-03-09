@@ -2,6 +2,155 @@
    GOUDEN DRAAK — Bestelwebsite stijlen (bestel.css)
    ═══════════════════════════════════════════════ */
 
+/* ══════════════════════════════════════════════════
+   CSS-ONLY WINKELMANDJE (checkbox trick)
+   ══════════════════════════════════════════════════ */
+
+/* Verberg alle checkboxen */
+.cart-cb { display: none; }
+
+/* Verberg cart-entries, totaal en checkout standaard */
+.cart-entry   { display: none; }
+.cart-totaal  { display: none; }
+.checkout-section { display: none; }
+
+/* Toon cart-entry als het bijbehorende checkbox gecheckt is */
+#cb-1:checked  ~ main .cart-entry-1,
+#cb-2:checked  ~ main .cart-entry-2,
+#cb-3:checked  ~ main .cart-entry-3,
+#cb-4:checked  ~ main .cart-entry-4,
+#cb-5:checked  ~ main .cart-entry-5,
+#cb-6:checked  ~ main .cart-entry-6,
+#cb-7:checked  ~ main .cart-entry-7,
+#cb-8:checked  ~ main .cart-entry-8,
+#cb-9:checked  ~ main .cart-entry-9,
+#cb-10:checked ~ main .cart-entry-10,
+#cb-11:checked ~ main .cart-entry-11,
+#cb-12:checked ~ main .cart-entry-12,
+#cb-13:checked ~ main .cart-entry-13,
+#cb-14:checked ~ main .cart-entry-14,
+#cb-15:checked ~ main .cart-entry-15,
+#cb-16:checked ~ main .cart-entry-16,
+#cb-17:checked ~ main .cart-entry-17,
+#cb-18:checked ~ main .cart-entry-18,
+#cb-19:checked ~ main .cart-entry-19,
+#cb-20:checked ~ main .cart-entry-20,
+#cb-21:checked ~ main .cart-entry-21,
+#cb-22:checked ~ main .cart-entry-22,
+#cb-23:checked ~ main .cart-entry-23,
+#cb-24:checked ~ main .cart-entry-24,
+#cb-25:checked ~ main .cart-entry-25 { display: flex; }
+
+/* Verberg "leeg" bericht zodra een item geselecteerd is */
+#cb-1:checked  ~ main .cart-empty,
+#cb-2:checked  ~ main .cart-empty,
+#cb-3:checked  ~ main .cart-empty,
+#cb-4:checked  ~ main .cart-empty,
+#cb-5:checked  ~ main .cart-empty,
+#cb-6:checked  ~ main .cart-empty,
+#cb-7:checked  ~ main .cart-empty,
+#cb-8:checked  ~ main .cart-empty,
+#cb-9:checked  ~ main .cart-empty,
+#cb-10:checked ~ main .cart-empty,
+#cb-11:checked ~ main .cart-empty,
+#cb-12:checked ~ main .cart-empty,
+#cb-13:checked ~ main .cart-empty,
+#cb-14:checked ~ main .cart-empty,
+#cb-15:checked ~ main .cart-empty,
+#cb-16:checked ~ main .cart-empty,
+#cb-17:checked ~ main .cart-empty,
+#cb-18:checked ~ main .cart-empty,
+#cb-19:checked ~ main .cart-empty,
+#cb-20:checked ~ main .cart-empty,
+#cb-21:checked ~ main .cart-empty,
+#cb-22:checked ~ main .cart-empty,
+#cb-23:checked ~ main .cart-empty,
+#cb-24:checked ~ main .cart-empty,
+#cb-25:checked ~ main .cart-empty { display: none; }
+
+/* Toon totaal en checkout zodra een item geselecteerd is */
+#cb-1:checked  ~ main .cart-totaal,
+#cb-2:checked  ~ main .cart-totaal,
+#cb-3:checked  ~ main .cart-totaal,
+#cb-4:checked  ~ main .cart-totaal,
+#cb-5:checked  ~ main .cart-totaal,
+#cb-6:checked  ~ main .cart-totaal,
+#cb-7:checked  ~ main .cart-totaal,
+#cb-8:checked  ~ main .cart-totaal,
+#cb-9:checked  ~ main .cart-totaal,
+#cb-10:checked ~ main .cart-totaal,
+#cb-11:checked ~ main .cart-totaal,
+#cb-12:checked ~ main .cart-totaal,
+#cb-13:checked ~ main .cart-totaal,
+#cb-14:checked ~ main .cart-totaal,
+#cb-15:checked ~ main .cart-totaal,
+#cb-16:checked ~ main .cart-totaal,
+#cb-17:checked ~ main .cart-totaal,
+#cb-18:checked ~ main .cart-totaal,
+#cb-19:checked ~ main .cart-totaal,
+#cb-20:checked ~ main .cart-totaal,
+#cb-21:checked ~ main .cart-totaal,
+#cb-22:checked ~ main .cart-totaal,
+#cb-23:checked ~ main .cart-totaal,
+#cb-24:checked ~ main .cart-totaal,
+#cb-25:checked ~ main .cart-totaal,
+#cb-1:checked  ~ main .checkout-section,
+#cb-2:checked  ~ main .checkout-section,
+#cb-3:checked  ~ main .checkout-section,
+#cb-4:checked  ~ main .checkout-section,
+#cb-5:checked  ~ main .checkout-section,
+#cb-6:checked  ~ main .checkout-section,
+#cb-7:checked  ~ main .checkout-section,
+#cb-8:checked  ~ main .checkout-section,
+#cb-9:checked  ~ main .checkout-section,
+#cb-10:checked ~ main .checkout-section,
+#cb-11:checked ~ main .checkout-section,
+#cb-12:checked ~ main .checkout-section,
+#cb-13:checked ~ main .checkout-section,
+#cb-14:checked ~ main .checkout-section,
+#cb-15:checked ~ main .checkout-section,
+#cb-16:checked ~ main .checkout-section,
+#cb-17:checked ~ main .checkout-section,
+#cb-18:checked ~ main .checkout-section,
+#cb-19:checked ~ main .checkout-section,
+#cb-20:checked ~ main .checkout-section,
+#cb-21:checked ~ main .checkout-section,
+#cb-22:checked ~ main .checkout-section,
+#cb-23:checked ~ main .checkout-section,
+#cb-24:checked ~ main .checkout-section,
+#cb-25:checked ~ main .checkout-section { display: block; }
+
+/* Actieve staat: + knop toont ✓ en wordt goud als item in mandje zit */
+.add-btn { font-size: 0; }
+.add-btn::after { content: '+'; font-size: 1.3rem; }
+
+
+#cb-1:checked  ~ main label[for="cb-1"].add-btn,
+#cb-2:checked  ~ main label[for="cb-2"].add-btn,
+#cb-3:checked  ~ main label[for="cb-3"].add-btn,
+#cb-4:checked  ~ main label[for="cb-4"].add-btn,
+#cb-5:checked  ~ main label[for="cb-5"].add-btn,
+#cb-6:checked  ~ main label[for="cb-6"].add-btn,
+#cb-7:checked  ~ main label[for="cb-7"].add-btn,
+#cb-8:checked  ~ main label[for="cb-8"].add-btn,
+#cb-9:checked  ~ main label[for="cb-9"].add-btn,
+#cb-10:checked ~ main label[for="cb-10"].add-btn,
+#cb-11:checked ~ main label[for="cb-11"].add-btn,
+#cb-12:checked ~ main label[for="cb-12"].add-btn,
+#cb-13:checked ~ main label[for="cb-13"].add-btn,
+#cb-14:checked ~ main label[for="cb-14"].add-btn,
+#cb-15:checked ~ main label[for="cb-15"].add-btn,
+#cb-16:checked ~ main label[for="cb-16"].add-btn,
+#cb-17:checked ~ main label[for="cb-17"].add-btn,
+#cb-18:checked ~ main label[for="cb-18"].add-btn,
+#cb-19:checked ~ main label[for="cb-19"].add-btn,
+#cb-20:checked ~ main label[for="cb-20"].add-btn,
+#cb-21:checked ~ main label[for="cb-21"].add-btn,
+#cb-22:checked ~ main label[for="cb-22"].add-btn,
+#cb-23:checked ~ main label[for="cb-23"].add-btn,
+#cb-24:checked ~ main label[for="cb-24"].add-btn,
+#cb-25:checked ~ main label[for="cb-25"].add-btn { background: var(--gold); }
+
 /* ── HEADER NAVIGATIE BESTEL ─────────────────── */
 .header-inner {
   max-width: 1400px;
@@ -606,8 +755,12 @@ main {
     z-index: 200;
   }
 
-  /* Acties tonen via JS klasse */
-  .header-actions--open {
+  /* CSS-only hamburger */
+  .nav-toggle-input {
+    display: none;
+  }
+
+  #nav-toggle:checked ~ .header-actions {
     display: flex;
   }
 }

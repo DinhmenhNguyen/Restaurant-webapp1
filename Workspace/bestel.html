@@ -69,15 +69,6 @@
     }
 
 
-    /* checkout en totaal standaard verborgen */
-    .cart-totaal {
-      display: none;
-    }
-
-    .checkout-section {
-      display: none;
-    }
-
     /* ── Beheer tab actief markering ─────────── */
     a.beheer-tab-link:target {
       background: var(--orange);
@@ -94,8 +85,9 @@
   ════════════════════════════════════════ -->
   <header>
     <div class="header-inner">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
       <a href="index.html" class="logo">廣州 <span>Guangzhou Foods</span></a>
-      <button class="header__hamburger" aria-expanded="false" aria-label="Menu openen">☰</button>
+      <label for="nav-toggle" class="header__hamburger" aria-label="Menu openen">☰</label>
       <div class="header-actions">
         <a href="#login-section" class="btn-secondary" style="font-size:0.85rem; padding:0.5rem 1.1rem;">🔐 Beheer</a>
         <a href="#bestel-sectie" class="btn-primary">🛒 Winkelmandje</a>
@@ -108,6 +100,34 @@
        HOOFDPAGINA — BESTELGEDEELTE
   ════════════════════════════════════════ -->
   <div id="bestel-sectie">
+
+    <!-- ── CSS-ONLY WINKELMANDJE: CHECKBOXEN ── -->
+    <input type="checkbox" id="cb-1" class="cart-cb">
+    <input type="checkbox" id="cb-2" class="cart-cb">
+    <input type="checkbox" id="cb-3" class="cart-cb">
+    <input type="checkbox" id="cb-4" class="cart-cb">
+    <input type="checkbox" id="cb-5" class="cart-cb">
+    <input type="checkbox" id="cb-6" class="cart-cb">
+    <input type="checkbox" id="cb-7" class="cart-cb">
+    <input type="checkbox" id="cb-8" class="cart-cb">
+    <input type="checkbox" id="cb-9" class="cart-cb">
+    <input type="checkbox" id="cb-10" class="cart-cb">
+    <input type="checkbox" id="cb-11" class="cart-cb">
+    <input type="checkbox" id="cb-12" class="cart-cb">
+    <input type="checkbox" id="cb-13" class="cart-cb">
+    <input type="checkbox" id="cb-14" class="cart-cb">
+    <input type="checkbox" id="cb-15" class="cart-cb">
+    <input type="checkbox" id="cb-16" class="cart-cb">
+    <input type="checkbox" id="cb-17" class="cart-cb">
+    <input type="checkbox" id="cb-18" class="cart-cb">
+    <input type="checkbox" id="cb-19" class="cart-cb">
+    <input type="checkbox" id="cb-20" class="cart-cb">
+    <input type="checkbox" id="cb-21" class="cart-cb">
+    <input type="checkbox" id="cb-22" class="cart-cb">
+    <input type="checkbox" id="cb-23" class="cart-cb">
+    <input type="checkbox" id="cb-24" class="cart-cb">
+    <input type="checkbox" id="cb-25" class="cart-cb">
+
     <main>
 
       <!-- ── LINKER KOLOM: MENU ── -->
@@ -116,12 +136,6 @@
         <div class="menu-hero">
           <h1>Kies jouw gerecht</h1>
           <p>Vers bereid, snel bezorgd — of haal af bij ons restaurant.</p>
-        </div>
-
-        <!-- Zoekbalk -->
-        <div class="zoekbalk-wrapper">
-          <span class="zoekbalk-icon">🔍</span>
-          <input type="search" class="zoekbalk" placeholder="Zoek een gerecht..." aria-label="Zoeken" />
         </div>
 
         <!-- Categorie anker-links -->
@@ -144,7 +158,7 @@
               <p>Gestoomde dumplings met dipsaus</p>
               <div class="item-footer">
                 <span class="item-price">€ 8,50</span>
-                <button class="add-btn" data-item="1">+</button>
+                <label for="cb-1" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -156,7 +170,7 @@
               <p>Met sesamolie en verse knoflook</p>
               <div class="item-footer">
                 <span class="item-price">€ 5,50</span>
-                <button class="add-btn" data-item="2">+</button>
+                <label for="cb-2" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -164,11 +178,47 @@
           <article class="item-card">
             <img class="item-img" src="https://images.unsplash.com/photo-1515022376298-7333f33e704b?w=400&h=300&fit=crop&q=80" alt="Loempia" />
             <div class="item-body">
-              <h4>Loempia (2 stuks)</h4>
+              <h4>Loempia (3 stuks)</h4>
               <p>Knapperige loempia met zoetzure saus</p>
               <div class="item-footer">
                 <span class="item-price">€ 6,00</span>
-                <button class="add-btn" data-item="3">+</button>
+                <label for="cb-3" class="add-btn"></label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <img class="item-img" src="https://images.unsplash.com/photo-1763994685090-c0927ff195d1?w=400&h=300&fit=crop&q=80" alt="Wontonsoep" />
+            <div class="item-body">
+              <h4>Wontonsoep</h4>
+              <p>Zachte wontons in heldere bouillon</p>
+              <div class="item-footer">
+                <span class="item-price">€ 7,00</span>
+                <label for="cb-17" class="add-btn"></label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <img class="item-img" src="https://images.unsplash.com/photo-1704383682314-92dd38542a0f?w=400&h=300&fit=crop&q=80" alt="Lente-uitjeskoek" />
+            <div class="item-body">
+              <h4>Lente-uitjeskoek</h4>
+              <p>Krokante pannenkoek met lente-uitjes</p>
+              <div class="item-footer">
+                <span class="item-price">€ 5,00</span>
+                <label for="cb-18" class="add-btn"></label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <img class="item-img" src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=300&fit=crop&q=80" alt="Zure pikante soep" />
+            <div class="item-body">
+              <h4>Zure pikante soep</h4>
+              <p>Klassieke soep met tofu en bamboescheuten</p>
+              <div class="item-footer">
+                <span class="item-price">€ 7,50</span>
+                <label for="cb-19" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -187,7 +237,7 @@
               <p>Gebakken noedels met groenten</p>
               <div class="item-footer">
                 <span class="item-price">€ 10,50</span>
-                <button class="add-btn" data-item="4">+</button>
+                <label for="cb-4" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -199,7 +249,7 @@
               <p>Gebakken rijst met ei en groenten</p>
               <div class="item-footer">
                 <span class="item-price">€ 10,50</span>
-                <button class="add-btn" data-item="5">+</button>
+                <label for="cb-5" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -211,7 +261,7 @@
               <p>Verse garnalen met peulvruchten</p>
               <div class="item-footer">
                 <span class="item-price">€ 14,95</span>
-                <button class="add-btn" data-item="6">+</button>
+                <label for="cb-6" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -223,7 +273,43 @@
               <p>Krokante eend met pannenkoekjes</p>
               <div class="item-footer">
                 <span class="item-price">€ 18,50</span>
-                <button class="add-btn" data-item="7">+</button>
+                <label for="cb-7" class="add-btn"></label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <img class="item-img" src="https://images.unsplash.com/photo-1605704922285-e82455dba38b?w=400&h=300&fit=crop&q=80" alt="Kung Pao Kip" />
+            <div class="item-body">
+              <h4>Kung Pao Kip</h4>
+              <p>Pittige kip met pinda's en chilipepers</p>
+              <div class="item-footer">
+                <span class="item-price">€ 13,50</span>
+                <label for="cb-20" class="add-btn"></label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <img class="item-img" src="https://images.unsplash.com/photo-1630564510802-0cac202af38d?w=400&h=300&fit=crop&q=80" alt="Zoetzuur Varkensvlees" />
+            <div class="item-body">
+              <h4>Zoetzuur Varkensvlees</h4>
+              <p>Knapperig varkensvlees met paprika</p>
+              <div class="item-footer">
+                <span class="item-price">€ 13,00</span>
+                <label for="cb-21" class="add-btn"></label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <img class="item-img" src="https://images.unsplash.com/photo-1760537553252-d2db6f20a4a2?w=400&h=300&fit=crop&q=80" alt="Char Siu" />
+            <div class="item-body">
+              <h4>Char Siu</h4>
+              <p>Gegrild Chinees BBQ-varkensvlees</p>
+              <div class="item-footer">
+                <span class="item-price">€ 15,50</span>
+                <label for="cb-22" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -242,7 +328,7 @@
               <p>Seizoensgroenten met teriyaki</p>
               <div class="item-footer">
                 <span class="item-price">€ 9,50</span>
-                <button class="add-btn" data-item="8">+</button>
+                <label for="cb-8" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -254,7 +340,43 @@
               <p>Zijdezachte tofu in gembersaus</p>
               <div class="item-footer">
                 <span class="item-price">€ 11,00</span>
-                <button class="add-btn" data-item="9">+</button>
+                <label for="cb-9" class="add-btn"></label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <img class="item-img" src="https://images.unsplash.com/photo-1769065647078-f067eb768035?w=400&h=300&fit=crop&q=80" alt="Mapo Tofu" />
+            <div class="item-body">
+              <h4>Mapo Tofu</h4>
+              <p>Pittige tofu in Sichuan pepersaus</p>
+              <div class="item-footer">
+                <span class="item-price">€ 11,50</span>
+                <label for="cb-23" class="add-btn"></label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <img class="item-img" src="https://images.unsplash.com/photo-1591813144634-eebdeab865e1?w=400&h=300&fit=crop&q=80" alt="Gestoomde aubergine" />
+            <div class="item-body">
+              <h4>Gestoomde aubergine</h4>
+              <p>Aubergine met knoflook en gember</p>
+              <div class="item-footer">
+                <span class="item-price">€ 10,00</span>
+                <label for="cb-24" class="add-btn"></label>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <img class="item-img" src="https://images.unsplash.com/photo-1767324672960-113be90efe49?w=400&h=300&fit=crop&q=80" alt="Chinese bloemkool" />
+            <div class="item-body">
+              <h4>Chinese bloemkool</h4>
+              <p>Roerbak bloemkool met oestersaus</p>
+              <div class="item-footer">
+                <span class="item-price">€ 10,50</span>
+                <label for="cb-25" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -273,7 +395,7 @@
               <p>Zoet, romig met tapiocaparels</p>
               <div class="item-footer">
                 <span class="item-price">€ 5,50</span>
-                <button class="add-btn" data-item="10">+</button>
+                <label for="cb-10" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -285,31 +407,31 @@
               <p>Romige matcha met tapiocaparels</p>
               <div class="item-footer">
                 <span class="item-price">€ 5,50</span>
-                <button class="add-btn" data-item="11">+</button>
+                <label for="cb-11" class="add-btn"></label>
               </div>
             </div>
           </article>
 
           <article class="item-card">
-            <img class="item-img" src="https://images.unsplash.com/photo-1631901589746-219fcffbdd29?w=400&h=300&fit=crop&q=80" alt="Bubble Tea Aardbei" />
+            <img class="item-img" src="https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&h=300&fit=crop&q=80" alt="Bubble Tea Aardbei" />
             <div class="item-body">
               <h4>Bubble Tea Aardbei</h4>
               <p>Fruitig en fris met frambozenpearls</p>
               <div class="item-footer">
                 <span class="item-price">€ 5,50</span>
-                <button class="add-btn" data-item="12">+</button>
+                <label for="cb-12" class="add-btn"></label>
               </div>
             </div>
           </article>
 
           <article class="item-card">
-            <img class="item-img" src="https://images.unsplash.com/photo-1626170238340-227a15077e8b?w=400&h=300&fit=crop&q=80" alt="Bubble Tea Brown Sugar" />
+            <img class="item-img" src="https://images.unsplash.com/photo-1741244133076-afcdda4befae?w=400&h=300&fit=crop&q=80" alt="Bubble Tea Brown Sugar" />
             <div class="item-body">
               <h4>Bubble Tea Brown Sugar</h4>
               <p>Melkthee met bruine suiker karamel</p>
               <div class="item-footer">
                 <span class="item-price">€ 6,00</span>
-                <button class="add-btn" data-item="13">+</button>
+                <label for="cb-13" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -321,7 +443,7 @@
               <p>Traditionele Chinese groene thee</p>
               <div class="item-footer">
                 <span class="item-price">€ 3,00</span>
-                <button class="add-btn" data-item="14">+</button>
+                <label for="cb-14" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -333,7 +455,7 @@
               <p>Licht geparfumeerde jasmijn groene thee</p>
               <div class="item-footer">
                 <span class="item-price">€ 3,00</span>
-                <button class="add-btn" data-item="15">+</button>
+                <label for="cb-15" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -345,7 +467,7 @@
               <p>Halfgefermenteerde thee, nootachtig van smaak</p>
               <div class="item-footer">
                 <span class="item-price">€ 3,50</span>
-                <button class="add-btn" data-item="16">+</button>
+                <label for="cb-16" class="add-btn"></label>
               </div>
             </div>
           </article>
@@ -359,32 +481,146 @@
       <aside class="cart-panel">
         <h2>🛒 Winkelmandje</h2>
 
-        <!-- Leeg bericht -->
         <div class="cart-empty">
           <div class="cart-empty-icon">🥡</div>
           <p>Je mandje is nog leeg.<br />Voeg een gerecht toe!</p>
         </div>
 
-        <!-- Winkelmandje items (dynamisch gevuld door JavaScript) -->
-        <ul class="cart-list" id="cart-items"></ul>
+        <ul class="cart-list">
+          <li class="cart-entry cart-entry-1">
+            <span class="cart-item-emoji">🥟</span>
+            <div class="cart-item-info"><h5>Dim Sum (6 stuks)</h5><span class="cart-item-prijs">€ 8,50</span></div>
+            <label for="cb-1" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-2">
+            <span class="cart-item-emoji">🥗</span>
+            <div class="cart-item-info"><h5>Komkommersalade</h5><span class="cart-item-prijs">€ 5,50</span></div>
+            <label for="cb-2" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-3">
+            <span class="cart-item-emoji">🍢</span>
+            <div class="cart-item-info"><h5>Loempia (3 stuks)</h5><span class="cart-item-prijs">€ 6,00</span></div>
+            <label for="cb-3" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-4">
+            <span class="cart-item-emoji">🍜</span>
+            <div class="cart-item-info"><h5>Bami Goreng</h5><span class="cart-item-prijs">€ 10,50</span></div>
+            <label for="cb-4" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-5">
+            <span class="cart-item-emoji">🍚</span>
+            <div class="cart-item-info"><h5>Nasi Goreng</h5><span class="cart-item-prijs">€ 10,50</span></div>
+            <label for="cb-5" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-6">
+            <span class="cart-item-emoji">🦐</span>
+            <div class="cart-item-info"><h5>Garnalen oestersaus</h5><span class="cart-item-prijs">€ 14,95</span></div>
+            <label for="cb-6" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-7">
+            <span class="cart-item-emoji">🍗</span>
+            <div class="cart-item-info"><h5>Peking Eend</h5><span class="cart-item-prijs">€ 18,50</span></div>
+            <label for="cb-7" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-8">
+            <span class="cart-item-emoji">🥦</span>
+            <div class="cart-item-info"><h5>Roerbakgroenten</h5><span class="cart-item-prijs">€ 9,50</span></div>
+            <label for="cb-8" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-9">
+            <span class="cart-item-emoji">🍄</span>
+            <div class="cart-item-info"><h5>Tofu met paddenstoelen</h5><span class="cart-item-prijs">€ 11,00</span></div>
+            <label for="cb-9" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-10">
+            <span class="cart-item-emoji">🧋</span>
+            <div class="cart-item-info"><h5>Bubble Tea Taro</h5><span class="cart-item-prijs">€ 5,50</span></div>
+            <label for="cb-10" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-11">
+            <span class="cart-item-emoji">🧋</span>
+            <div class="cart-item-info"><h5>Bubble Tea Matcha</h5><span class="cart-item-prijs">€ 5,50</span></div>
+            <label for="cb-11" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-12">
+            <span class="cart-item-emoji">🧋</span>
+            <div class="cart-item-info"><h5>Bubble Tea Aardbei</h5><span class="cart-item-prijs">€ 5,50</span></div>
+            <label for="cb-12" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-13">
+            <span class="cart-item-emoji">🧋</span>
+            <div class="cart-item-info"><h5>Bubble Tea Brown Sugar</h5><span class="cart-item-prijs">€ 6,00</span></div>
+            <label for="cb-13" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-14">
+            <span class="cart-item-emoji">🍵</span>
+            <div class="cart-item-info"><h5>Groene Thee</h5><span class="cart-item-prijs">€ 3,00</span></div>
+            <label for="cb-14" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-15">
+            <span class="cart-item-emoji">🍵</span>
+            <div class="cart-item-info"><h5>Jasmijn Thee</h5><span class="cart-item-prijs">€ 3,00</span></div>
+            <label for="cb-15" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-16">
+            <span class="cart-item-emoji">🍵</span>
+            <div class="cart-item-info"><h5>Oolong Thee</h5><span class="cart-item-prijs">€ 3,50</span></div>
+            <label for="cb-16" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-17">
+            <span class="cart-item-emoji">🍲</span>
+            <div class="cart-item-info"><h5>Wontonsoep</h5><span class="cart-item-prijs">€ 7,00</span></div>
+            <label for="cb-17" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-18">
+            <span class="cart-item-emoji">🥞</span>
+            <div class="cart-item-info"><h5>Lente-uitjeskoek</h5><span class="cart-item-prijs">€ 5,00</span></div>
+            <label for="cb-18" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-19">
+            <span class="cart-item-emoji">🥣</span>
+            <div class="cart-item-info"><h5>Zure pikante soep</h5><span class="cart-item-prijs">€ 7,50</span></div>
+            <label for="cb-19" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-20">
+            <span class="cart-item-emoji">🍗</span>
+            <div class="cart-item-info"><h5>Kung Pao Kip</h5><span class="cart-item-prijs">€ 13,50</span></div>
+            <label for="cb-20" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-21">
+            <span class="cart-item-emoji">🍖</span>
+            <div class="cart-item-info"><h5>Zoetzuur Varkensvlees</h5><span class="cart-item-prijs">€ 13,00</span></div>
+            <label for="cb-21" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-22">
+            <span class="cart-item-emoji">🥩</span>
+            <div class="cart-item-info"><h5>Char Siu</h5><span class="cart-item-prijs">€ 15,50</span></div>
+            <label for="cb-22" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-23">
+            <span class="cart-item-emoji">🌶️</span>
+            <div class="cart-item-info"><h5>Mapo Tofu</h5><span class="cart-item-prijs">€ 11,50</span></div>
+            <label for="cb-23" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-24">
+            <span class="cart-item-emoji">🍆</span>
+            <div class="cart-item-info"><h5>Gestoomde aubergine</h5><span class="cart-item-prijs">€ 10,00</span></div>
+            <label for="cb-24" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+          <li class="cart-entry cart-entry-25">
+            <span class="cart-item-emoji">🥦</span>
+            <div class="cart-item-info"><h5>Chinese bloemkool</h5><span class="cart-item-prijs">€ 10,50</span></div>
+            <label for="cb-25" class="cart-remove-btn" title="Verwijderen">×</label>
+          </li>
+        </ul>
 
-        <!-- Totaalbox -->
         <div class="cart-totaal">
-          <div class="totaal-rij">
-            <span>Subtotaal</span>
-            <span id="cart-subtotaal">€ 0,00</span>
-          </div>
           <div class="totaal-rij">
             <span>Bezorgkosten</span>
             <span>€ 2,50</span>
           </div>
-          <div class="totaal-rij eindtotaal">
-            <span>Totaal</span>
-            <span id="cart-eindtotaal">€ 2,50</span>
-          </div>
         </div>
 
-        <!-- Afrekenen formulier -->
         <div class="checkout-section">
           <h3>Jouw gegevens</h3>
           <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
@@ -734,143 +970,6 @@
     </div><!-- einde beheer-content -->
   </section><!-- einde #beheer-section -->
 
-  <script>
-    // ── WINKELMANDJE ────────────────────────────────────
-    var cart = {};
-    var itemData = {};
-
-    // Lees gerecht-data uit de DOM
-    document.querySelectorAll('.item-card').forEach(function (card) {
-      var btn = card.querySelector('.add-btn');
-      if (!btn) return;
-      var id = btn.dataset.item;
-      var naam = card.querySelector('h4').textContent.trim();
-      var prijsText = card.querySelector('.item-price').textContent.replace('€', '').replace(',', '.').trim();
-      var emoji = card.querySelector('.item-emoji').textContent.trim();
-      itemData[id] = { naam: naam, prijs: parseFloat(prijsText), emoji: emoji };
-    });
-
-    // Klik op + knop
-    document.querySelectorAll('.add-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var id = this.dataset.item;
-        cart[id] = (cart[id] || 0) + 1;
-        renderCart();
-      });
-    });
-
-    function changeQty(id, delta) {
-      cart[id] = (cart[id] || 0) + delta;
-      if (cart[id] <= 0) delete cart[id];
-      renderCart();
-    }
-
-    function removeItem(id) {
-      delete cart[id];
-      renderCart();
-    }
-
-    function renderCart() {
-      var cartItems = document.getElementById('cart-items');
-      var cartEmpty = document.querySelector('.cart-empty');
-      var cartTotaal = document.querySelector('.cart-totaal');
-      var checkoutSection = document.querySelector('.checkout-section');
-      var actieveIds = Object.keys(cart).filter(function (id) { return cart[id] > 0; });
-
-      if (actieveIds.length === 0) {
-        cartEmpty.style.display = '';
-        cartTotaal.style.display = 'none';
-        checkoutSection.style.display = 'none';
-        cartItems.innerHTML = '';
-        updateAddBtns();
-        return;
-      }
-
-      cartEmpty.style.display = 'none';
-      cartTotaal.style.display = 'block';
-      checkoutSection.style.display = 'block';
-
-      var subtotaal = 0;
-      cartItems.innerHTML = actieveIds.map(function (id) {
-        var item = itemData[id];
-        var qty = cart[id];
-        subtotaal += item.prijs * qty;
-        var prijsStr = (item.prijs * qty).toFixed(2).replace('.', ',');
-        var qtyLabel = qty > 1 ? ' <em class="cart-qty-label">&times;' + qty + '</em>' : '';
-        return '<li class="cart-item">'
-          + '<span class="cart-item-emoji">' + item.emoji + '</span>'
-          + '<div class="cart-item-info">'
-          + '<h5>' + item.naam + '</h5>'
-          + '<span class="cart-item-prijs">€ ' + prijsStr + qtyLabel + '</span>'
-          + '</div>'
-          + '<div class="cart-item-actions">'
-          + '<button class="cart-qty-btn" onclick="changeQty(' + id + ', -1)">&#8722;</button>'
-          + '<span class="cart-qty-num">' + qty + '</span>'
-          + '<button class="cart-qty-btn" onclick="changeQty(' + id + ', 1)">+</button>'
-          + '<button class="cart-remove-btn" onclick="removeItem(' + id + ')" title="Verwijderen">&times;</button>'
-          + '</div>'
-          + '</li>';
-      }).join('');
-
-      document.getElementById('cart-subtotaal').textContent = '€ ' + subtotaal.toFixed(2).replace('.', ',');
-      document.getElementById('cart-eindtotaal').textContent = '€ ' + (subtotaal + 2.50).toFixed(2).replace('.', ',');
-      updateAddBtns();
-    }
-
-    function updateAddBtns() {
-      document.querySelectorAll('.add-btn').forEach(function (btn) {
-        var id = btn.dataset.item;
-        var qty = cart[id] || 0;
-        if (qty > 0) {
-          btn.classList.add('add-btn--active');
-          btn.textContent = qty;
-        } else {
-          btn.classList.remove('add-btn--active');
-          btn.textContent = '+';
-        }
-      });
-    }
-
-    // ── ZOEKBALK ─────────────────────────────────────────
-    var zoekbalk = document.querySelector('.zoekbalk');
-    zoekbalk.addEventListener('input', function () {
-      var query = this.value.toLowerCase().trim();
-      document.querySelectorAll('.item-card').forEach(function (card) {
-        var naam = card.querySelector('h4').textContent.toLowerCase();
-        var desc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
-        card.style.display = (naam.includes(query) || desc.includes(query)) ? '' : 'none';
-      });
-      document.querySelectorAll('.items-grid').forEach(function (grid) {
-        var aantalZichtbaar = Array.from(grid.querySelectorAll('.item-card'))
-          .filter(function (c) { return c.style.display !== 'none'; }).length;
-        var titel = grid.previousElementSibling;
-        if (titel && titel.classList.contains('category-title')) {
-          titel.style.display = aantalZichtbaar === 0 ? 'none' : '';
-        }
-        grid.style.display = aantalZichtbaar === 0 ? 'none' : '';
-      });
-    });
-
-    // ── HAMBURGER MENU — bestel.html ─────────────────────
-    var bestelHamburger = document.querySelector('.header__hamburger');
-    var bestelActions = document.querySelector('.header-actions');
-
-    if (bestelHamburger && bestelActions) {
-      bestelHamburger.addEventListener('click', function () {
-        var isOpen = bestelActions.classList.toggle('header-actions--open');
-        bestelHamburger.setAttribute('aria-expanded', String(isOpen));
-        bestelHamburger.textContent = isOpen ? '✕' : '☰';
-      });
-
-      document.addEventListener('click', function (e) {
-        if (!bestelHamburger.contains(e.target) && !bestelActions.contains(e.target)) {
-          bestelActions.classList.remove('header-actions--open');
-          bestelHamburger.setAttribute('aria-expanded', 'false');
-          bestelHamburger.textContent = '☰';
-        }
-      });
-    }
-  </script>
 </body>
 
 </html>

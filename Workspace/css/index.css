@@ -374,8 +374,12 @@ nav a:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   }
 
-  /* JS klasse → menu tonen */
-  .header__nav--open {
+  /* CSS-only hamburger */
+  .nav-toggle-input {
+    display: none;
+  }
+
+  #nav-toggle:checked ~ .header__nav {
     display: block;
   }
 
