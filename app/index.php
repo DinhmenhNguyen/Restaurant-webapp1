@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GuangzhouFoods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════ -->
+  <header>
+    <div class="header-inner">
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+
+      <a href="#home" class="logo">
+        廣州 <span>Guangzhou Foods</span>
+      </a>
+
+      <!-- Hamburger -->
+      <label for="nav-toggle" class="header__hamburger" aria-label="Menu openen">☰</label>
+
+      <nav class="header__nav">
+        <ul class="header-links">
+          <li><a href="#over-ons" class="header__nav-link">Over ons</a></li>
+          <li><a href="#menu" class="header__nav-link">Menu</a></li>
+          <li><a href="#contact" class="header__nav-link">Contact</a></li>
+          <li><a href="bestel.html" class="btn-primary header__nav-link">Bestel nu</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ════════════════════════════════════════
+       HERO / LANDINGPAGE
+  ════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="deco-circle deco-circle-1"></div>
+    <div class="deco-circle deco-circle-2"></div>
+
+    <div class="hero-content">
+      <span class="hero-badge">Authentiek Chinees · Nijmegen</span>
+
+      <h1>Proef de smaak van<br /><em>het Verre Oosten</em></h1>
+
+      <p class="hero-sub">
+        Verse ingrediënten, traditionele recepten en een warme sfeer —
+        elke dag vers bereid voor jou.
+      </p>
+
+      <div class="hero-actions">
+        <a href="bestel.html" class="btn-primary">Online bestellen</a>
+        <a href="#menu" class="btn-secondary">Bekijk menu</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       HIGHLIGHTS
+  ════════════════════════════════════════ -->
+  <section class="highlights">
+    <span class="section-label">Waarom wij</span>
+    <h2 class="section-title">Onze beloften aan jou</h2>
+
+    <div class="cards-grid">
+
+      <article class="card">
+        <div class="icon-circle">🥢</div>
+        <h3>Authentieke recepten</h3>
+        <p>
+          Onze gerechten zijn gebaseerd op klassieke Chinese keukentradities,
+          doorgegeven van generatie op generatie.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon-circle">🌿</div>
+        <h3>Verse ingrediënten</h3>
+        <p>
+          Elke dag selecteren wij de beste en meest verse producten
+          voor een optimale smaak op jouw bord.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon-circle">🛵</div>
+        <h3>Snelle bezorging</h3>
+        <p>
+          Wij bezorgen jouw bestelling warm en snel, binnen
+          30 minuten in ons bezorggebied.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon-circle">❤️</div>
+        <h3>Familiebedrijf</h3>
+        <p>
+          Al 25 jaar een begrip in Rotterdam — met passie en liefde
+          voor de Chinese keuken runnen wij dit restaurant.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       OVER ONS
+  ════════════════════════════════════════ -->
+  <section id="over-ons">
+    <div class="about-inner">
+
+      <div class="about-visual">
+        <div class="about-img-box">
+          <img src="https://images.unsplash.com/photo-1648572568241-713f419c1fef?w=500&h=625&fit=crop&q=80" alt="Chinees restaurant" />
+        </div>
+        <div class="about-float-tag">
+          <strong>25+</strong>
+          Jaar ervaring
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="section-label">Over ons</span>
+        <h2 class="section-title">Een verhaal van smaak en traditie</h2>
+
+        <p>
+          In 1999 opende de familie Zhang de deuren van Guangzhou Foods in het
+          hart van Rotterdam. Wat begon als een klein eetcafé met vijf tafels,
+          is uitgegroeid tot een geliefde plek voor iedereen die houdt van
+          eerlijk en authentiek Chinees eten.
+        </p>
+        <p>
+          Chef-kok Li Zhang reist jaarlijks naar China om nieuwe inspiratie op
+          te doen en de beste specerijen mee naar huis te brengen. De combinatie
+          van zijn kennis en de lokale verse producten maakt onze gerechten uniek.
+        </p>
+        <p>
+          Bij Guangzhou Foods ben je meer dan een klant — je bent gast aan
+          onze familietafel.
+        </p>
+
+        <div class="about-tags">
+          <span class="tag">🏆 Familiebedrijf</span>
+          <span class="tag">🌱 Duurzaam</span>
+          <span class="tag">🥬 Verse producten</span>
+          <span class="tag">🍜 Afhalen &amp; bezorgen</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       MENU PREVIEW
+  ════════════════════════════════════════ -->
+  <section id="menu">
+    <span class="section-label">Onze specialiteiten</span>
+    <h2 class="section-title">Populaire gerechten</h2>
+
+    <div class="menu-grid">
+
+      <article class="menu-item">
+        <img class="menu-img" src="https://images.unsplash.com/photo-1520689656391-66b6dd7f0ec6?w=400&h=300&fit=crop&q=80" alt="Bami Goreng" />
+        <div class="menu-info">
+          <h4>Bami Goreng</h4>
+          <p>Gebakken noedels met groenten en saus</p>
+          <span class="menu-price">€ 10,50</span>
+        </div>
+      </article>
+
+      <article class="menu-item">
+        <img class="menu-img" src="https://images.unsplash.com/photo-1559314809-0d155014e29e?w=400&h=300&fit=crop&q=80" alt="Garnalen in oestersaus" />
+        <div class="menu-info">
+          <h4>Garnalen in oestersaus</h4>
+          <p>Verse garnalen met peulvruchten</p>
+          <span class="menu-price">€ 14,95</span>
+        </div>
+      </article>
+
+      <article class="menu-item">
+        <img class="menu-img" src="https://images.unsplash.com/photo-1518983546435-91f8b87fe561?w=400&h=300&fit=crop&q=80" alt="Dim Sum" />
+        <div class="menu-info">
+          <h4>Dim Sum (6 stuks)</h4>
+          <p>Gestoomde dumplings met dipsaus</p>
+          <span class="menu-price">€ 8,50</span>
+        </div>
+      </article>
+
+      <article class="menu-item">
+        <img class="menu-img" src="https://images.unsplash.com/photo-1759418661781-2b37f26c4573?w=400&h=300&fit=crop&q=80" alt="Peking Eend" />
+        <div class="menu-info">
+          <h4>Peking Eend</h4>
+          <p>Krokante eend met pannenkoekjes</p>
+          <span class="menu-price">€ 18,50</span>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="menu-cta">
+      <a href="bestel.html" class="btn-primary">Volledig menu &amp; bestellen</a>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       CONTACT
+  ════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="contact-inner">
+
+      <div class="contact-info">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Neem contact op</h2>
+
+        <div class="contact-row">
+          <div class="icon-circle">📍</div>
+          <div>
+            <h4>Adres</h4>
+            <p>Dragonstraat 88, 3011 AB Rotterdam</p>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="icon-circle">📞</div>
+          <div>
+            <h4>Telefoon</h4>
+            <p>010 – 456 78 90</p>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="icon-circle">🕐</div>
+          <div>
+            <h4>Openingstijden</h4>
+            <p>Maandag – Vrijdag: 11:00 – 22:00</p>
+            <p>Zaterdag – Zondag: 12:00 – 23:00</p>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="icon-circle">✉️</div>
+          <div>
+            <h4>E-mail</h4>
+            <p>info@GuangzhouFoods.nl</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-box">
+        <h3>Stuur een bericht</h3>
+        <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+          <div class="form-group">
+            <label for="naam">Naam</label>
+            <input type="text" id="naam" name="naam" placeholder="Jouw naam" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" placeholder="jouw@email.nl" required />
+          </div>
+          <div class="form-group">
+            <label for="bericht">Bericht</label>
+            <textarea id="bericht" name="bericht" placeholder="Jouw bericht..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%; padding:0.8rem;">
+            Versturen
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <a href="#home" class="logo">廣州 <span>Guangzhou Foods
+          </span></a>
+        <p>
+          Authentiek Chinees eten in Rotterdam. Al 25 jaar bereiden
+          wij de lekkerste gerechten voor jou en je familie.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigatie</h5>
+        <a href="#home">Home</a>
+        <a href="#over-ons">Over ons</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Bestellen</h5>
+        <a href="bestel.html">Online bestellen</a>
+        <a href="bestel.html#login-section">Medewerkers login</a>
+        <a href="#">Allergie info</a>
+        <a href="#">Bezorggebied</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 廣州 Guangzhou Foods. Alle rechten voorbehouden.</span>
+      <span>Gemaakt met ❤️ in Rotterdam</span>
+    </div>
+  </footer>
+
+</body>
+
+</html>

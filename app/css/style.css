@@ -1,0 +1,280 @@
+/* ═══════════════════════════════════════════════
+   GOUDEN DRAAK — Gedeelde stijlen
+   ═══════════════════════════════════════════════ */
+
+/* ── RESET ───────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ── KLEUREN & VARIABELEN ────────────────────── */
+:root {
+  --gold: #F5A623;
+  --orange: #E8742A;
+  --grey: #6B6B6B;
+  --light-grey: #F2F0ED;
+  --mid-grey: #DEDBD6;
+  --white: #FFFFFF;
+  --dark: #1A1A1A;
+
+  --radius-pill: 999px;
+  --radius-card: 28px;
+  --radius-sm: 16px;
+}
+
+/* ── TYPOGRAFIE ──────────────────────────────── */
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Noto Serif SC', serif;
+  line-height: 1.15;
+  color: var(--dark);
+}
+
+p {
+  line-height: 1.75;
+  color: var(--grey);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── KNOPPEN ─────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  border: none;
+  padding: 0.65rem 1.6rem;
+  border-radius: var(--radius-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--gold);
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--orange);
+  border: 2px solid var(--orange);
+  padding: 0.6rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+/* ── LABELS & SECTIETITELS ───────────────────── */
+.section-label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 2.5rem;
+}
+
+/* ── TAG PILLS ───────────────────────────────── */
+.tag {
+  display: inline-block;
+  background: var(--white);
+  border: 1px solid var(--mid-grey);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  color: var(--grey);
+}
+
+/* ── ICON CIRKEL ─────────────────────────────── */
+.icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+/* ── FORMULIER ───────────────────────────────── */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--grey);
+  margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--light-grey);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--dark);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--orange);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* ── LOGO ────────────────────────────────────── */
+.logo {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.4rem;
+  color: var(--orange);
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+/* ── HAMBURGER CHECKBOX (altijd verborgen) ───── */
+.nav-toggle-input {
+  display: none;
+}
+
+/* ── HEADER ──────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--mid-grey);
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── FOOTER ──────────────────────────────────── */
+footer {
+  background: var(--dark);
+  color: #aaa;
+  padding: 3.5rem 2rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer-brand p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-top: 0.8rem;
+  color: #777;
+}
+
+.footer-col h5 {
+  color: var(--white);
+  font-size: 0.88rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.footer-col a {
+  display: block;
+  color: #777;
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: #555;
+}
+
+/* ── RESPONSIEF ──────────────────────────────── */
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

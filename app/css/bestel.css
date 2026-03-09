@@ -1,0 +1,766 @@
+/* ═══════════════════════════════════════════════
+   GOUDEN DRAAK — Bestelwebsite stijlen (bestel.css)
+   ═══════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════
+   CSS-ONLY WINKELMANDJE (checkbox trick)
+   ══════════════════════════════════════════════════ */
+
+/* Verberg alle checkboxen */
+.cart-cb { display: none; }
+
+/* Verberg cart-entries, totaal en checkout standaard */
+.cart-entry   { display: none; }
+.cart-totaal  { display: none; }
+.checkout-section { display: none; }
+
+/* Toon cart-entry als het bijbehorende checkbox gecheckt is */
+#cb-1:checked  ~ main .cart-entry-1,
+#cb-2:checked  ~ main .cart-entry-2,
+#cb-3:checked  ~ main .cart-entry-3,
+#cb-4:checked  ~ main .cart-entry-4,
+#cb-5:checked  ~ main .cart-entry-5,
+#cb-6:checked  ~ main .cart-entry-6,
+#cb-7:checked  ~ main .cart-entry-7,
+#cb-8:checked  ~ main .cart-entry-8,
+#cb-9:checked  ~ main .cart-entry-9,
+#cb-10:checked ~ main .cart-entry-10,
+#cb-11:checked ~ main .cart-entry-11,
+#cb-12:checked ~ main .cart-entry-12,
+#cb-13:checked ~ main .cart-entry-13,
+#cb-14:checked ~ main .cart-entry-14,
+#cb-15:checked ~ main .cart-entry-15,
+#cb-16:checked ~ main .cart-entry-16,
+#cb-17:checked ~ main .cart-entry-17,
+#cb-18:checked ~ main .cart-entry-18,
+#cb-19:checked ~ main .cart-entry-19,
+#cb-20:checked ~ main .cart-entry-20,
+#cb-21:checked ~ main .cart-entry-21,
+#cb-22:checked ~ main .cart-entry-22,
+#cb-23:checked ~ main .cart-entry-23,
+#cb-24:checked ~ main .cart-entry-24,
+#cb-25:checked ~ main .cart-entry-25 { display: flex; }
+
+/* Verberg "leeg" bericht zodra een item geselecteerd is */
+#cb-1:checked  ~ main .cart-empty,
+#cb-2:checked  ~ main .cart-empty,
+#cb-3:checked  ~ main .cart-empty,
+#cb-4:checked  ~ main .cart-empty,
+#cb-5:checked  ~ main .cart-empty,
+#cb-6:checked  ~ main .cart-empty,
+#cb-7:checked  ~ main .cart-empty,
+#cb-8:checked  ~ main .cart-empty,
+#cb-9:checked  ~ main .cart-empty,
+#cb-10:checked ~ main .cart-empty,
+#cb-11:checked ~ main .cart-empty,
+#cb-12:checked ~ main .cart-empty,
+#cb-13:checked ~ main .cart-empty,
+#cb-14:checked ~ main .cart-empty,
+#cb-15:checked ~ main .cart-empty,
+#cb-16:checked ~ main .cart-empty,
+#cb-17:checked ~ main .cart-empty,
+#cb-18:checked ~ main .cart-empty,
+#cb-19:checked ~ main .cart-empty,
+#cb-20:checked ~ main .cart-empty,
+#cb-21:checked ~ main .cart-empty,
+#cb-22:checked ~ main .cart-empty,
+#cb-23:checked ~ main .cart-empty,
+#cb-24:checked ~ main .cart-empty,
+#cb-25:checked ~ main .cart-empty { display: none; }
+
+/* Toon totaal en checkout zodra een item geselecteerd is */
+#cb-1:checked  ~ main .cart-totaal,
+#cb-2:checked  ~ main .cart-totaal,
+#cb-3:checked  ~ main .cart-totaal,
+#cb-4:checked  ~ main .cart-totaal,
+#cb-5:checked  ~ main .cart-totaal,
+#cb-6:checked  ~ main .cart-totaal,
+#cb-7:checked  ~ main .cart-totaal,
+#cb-8:checked  ~ main .cart-totaal,
+#cb-9:checked  ~ main .cart-totaal,
+#cb-10:checked ~ main .cart-totaal,
+#cb-11:checked ~ main .cart-totaal,
+#cb-12:checked ~ main .cart-totaal,
+#cb-13:checked ~ main .cart-totaal,
+#cb-14:checked ~ main .cart-totaal,
+#cb-15:checked ~ main .cart-totaal,
+#cb-16:checked ~ main .cart-totaal,
+#cb-17:checked ~ main .cart-totaal,
+#cb-18:checked ~ main .cart-totaal,
+#cb-19:checked ~ main .cart-totaal,
+#cb-20:checked ~ main .cart-totaal,
+#cb-21:checked ~ main .cart-totaal,
+#cb-22:checked ~ main .cart-totaal,
+#cb-23:checked ~ main .cart-totaal,
+#cb-24:checked ~ main .cart-totaal,
+#cb-25:checked ~ main .cart-totaal,
+#cb-1:checked  ~ main .checkout-section,
+#cb-2:checked  ~ main .checkout-section,
+#cb-3:checked  ~ main .checkout-section,
+#cb-4:checked  ~ main .checkout-section,
+#cb-5:checked  ~ main .checkout-section,
+#cb-6:checked  ~ main .checkout-section,
+#cb-7:checked  ~ main .checkout-section,
+#cb-8:checked  ~ main .checkout-section,
+#cb-9:checked  ~ main .checkout-section,
+#cb-10:checked ~ main .checkout-section,
+#cb-11:checked ~ main .checkout-section,
+#cb-12:checked ~ main .checkout-section,
+#cb-13:checked ~ main .checkout-section,
+#cb-14:checked ~ main .checkout-section,
+#cb-15:checked ~ main .checkout-section,
+#cb-16:checked ~ main .checkout-section,
+#cb-17:checked ~ main .checkout-section,
+#cb-18:checked ~ main .checkout-section,
+#cb-19:checked ~ main .checkout-section,
+#cb-20:checked ~ main .checkout-section,
+#cb-21:checked ~ main .checkout-section,
+#cb-22:checked ~ main .checkout-section,
+#cb-23:checked ~ main .checkout-section,
+#cb-24:checked ~ main .checkout-section,
+#cb-25:checked ~ main .checkout-section { display: block; }
+
+/* Actieve staat: + knop toont ✓ en wordt goud als item in mandje zit */
+.add-btn { font-size: 0; }
+.add-btn::after { content: '+'; font-size: 1.3rem; }
+
+
+#cb-1:checked  ~ main label[for="cb-1"].add-btn,
+#cb-2:checked  ~ main label[for="cb-2"].add-btn,
+#cb-3:checked  ~ main label[for="cb-3"].add-btn,
+#cb-4:checked  ~ main label[for="cb-4"].add-btn,
+#cb-5:checked  ~ main label[for="cb-5"].add-btn,
+#cb-6:checked  ~ main label[for="cb-6"].add-btn,
+#cb-7:checked  ~ main label[for="cb-7"].add-btn,
+#cb-8:checked  ~ main label[for="cb-8"].add-btn,
+#cb-9:checked  ~ main label[for="cb-9"].add-btn,
+#cb-10:checked ~ main label[for="cb-10"].add-btn,
+#cb-11:checked ~ main label[for="cb-11"].add-btn,
+#cb-12:checked ~ main label[for="cb-12"].add-btn,
+#cb-13:checked ~ main label[for="cb-13"].add-btn,
+#cb-14:checked ~ main label[for="cb-14"].add-btn,
+#cb-15:checked ~ main label[for="cb-15"].add-btn,
+#cb-16:checked ~ main label[for="cb-16"].add-btn,
+#cb-17:checked ~ main label[for="cb-17"].add-btn,
+#cb-18:checked ~ main label[for="cb-18"].add-btn,
+#cb-19:checked ~ main label[for="cb-19"].add-btn,
+#cb-20:checked ~ main label[for="cb-20"].add-btn,
+#cb-21:checked ~ main label[for="cb-21"].add-btn,
+#cb-22:checked ~ main label[for="cb-22"].add-btn,
+#cb-23:checked ~ main label[for="cb-23"].add-btn,
+#cb-24:checked ~ main label[for="cb-24"].add-btn,
+#cb-25:checked ~ main label[for="cb-25"].add-btn { background: var(--gold); }
+
+/* ── HEADER NAVIGATIE BESTEL ─────────────────── */
+.header-inner {
+  max-width: 1400px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* ── MAIN LAYOUT ─────────────────────────────── */
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ── MENU HERO BANNER ────────────────────────── */
+.menu-hero {
+  background: linear-gradient(135deg, var(--orange) 0%, var(--gold) 100%);
+  border-radius: var(--radius-card);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-hero::after {
+  content: '🍜';
+  position: absolute;
+  right: 1.5rem;
+  bottom: -1rem;
+  font-size: 6rem;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.menu-hero h1 {
+  color: var(--white);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: 0.4rem;
+}
+
+.menu-hero p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.92rem;
+}
+
+/* ── ZOEKBALK ────────────────────────────────── */
+.zoekbalk-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 1.2rem;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s;
+}
+
+.zoekbalk-wrapper:focus-within {
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+.zoekbalk-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.zoekbalk {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--dark);
+  background: transparent;
+}
+
+.zoekbalk::placeholder {
+  color: var(--grey);
+}
+
+/* ── CATEGORIE TABS ──────────────────────────── */
+.cat-tabs {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.cat-tab {
+  background: var(--white);
+  border: none;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--grey);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Actieve tab via :target of eerste tab geselecteerd */
+.cat-tab:first-child,
+.cat-tab:focus {
+  background: var(--orange);
+  color: var(--white);
+  outline: none;
+}
+
+/* ── MENU CATEGORIETITEL ─────────────────────── */
+.category-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  padding-top: 1rem;
+  color: var(--dark);
+}
+
+/* ── GERECHTEN GRID ──────────────────────────── */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ── GERECHT KAART ───────────────────────────── */
+.item-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+}
+
+.item-img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+}
+
+.item-body {
+  padding: 1rem;
+}
+
+.item-body h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.item-body p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+}
+
+.item-price {
+  font-weight: 600;
+  color: var(--orange);
+  font-size: 1rem;
+}
+
+/* ── TOEVOEGEN KNOP ──────────────────────────── */
+.add-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 1.3rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.1s;
+  user-select: none;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.add-btn:hover {
+  background: var(--gold);
+}
+
+.add-btn:active {
+  transform: scale(0.9);
+}
+
+.add-btn--active {
+  background: var(--gold);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+/* ── WINKELMANDJE PANEEL ─────────────────────── */
+.cart-panel {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: 1.8rem;
+  position: sticky;
+  top: 88px;
+}
+
+.cart-panel h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Lege winkelmandje bericht */
+.cart-empty {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.cart-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.cart-empty p {
+  font-size: 0.9rem;
+}
+
+/* Winkelmandje gerecht rijen */
+.cart-list {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.cart-item-emoji {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item-info h5 {
+  font-size: 0.88rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item-prijs {
+  font-size: 0.78rem;
+  color: var(--orange);
+  font-weight: 500;
+}
+
+.cart-qty-label {
+  color: var(--grey);
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ── CART ACTIES ─────────────────────────────── */
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.cart-qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--mid-grey);
+  background: var(--white);
+  color: var(--dark);
+  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.15s, border-color 0.15s;
+  padding: 0;
+}
+
+.cart-qty-btn:hover {
+  background: var(--light-grey);
+  border-color: var(--grey);
+}
+
+.cart-qty-num {
+  min-width: 18px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.cart-remove-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: var(--light-grey);
+  color: var(--grey);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.15rem;
+  transition: background 0.15s, color 0.15s;
+  padding: 0;
+}
+
+.cart-remove-btn:hover {
+  background: #fde8e8;
+  color: #c0392b;
+}
+
+/* ── TOTAAL BOX ──────────────────────────────── */
+.cart-totaal {
+  background: var(--light-grey);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.totaal-rij {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--grey);
+  margin-bottom: 0.4rem;
+}
+
+.totaal-rij.eindtotaal {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--dark);
+  border-top: 1px solid var(--mid-grey);
+  padding-top: 0.6rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+/* ── AFREKENEN FORMULIER ─────────────────────── */
+.checkout-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--light-grey);
+}
+
+.checkout-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ── LOGIN PANEEL ────────────────────────────── */
+#login-section {
+  background: var(--light-grey);
+  padding: 5rem 2rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background: var(--white);
+  border-radius: 32px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.login-logo {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.3rem;
+  color: var(--orange);
+  margin-bottom: 0.3rem;
+}
+
+.login-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.login-box>p {
+  font-size: 0.88rem;
+  margin-bottom: 1.8rem;
+}
+
+.login-box .form-group {
+  text-align: left;
+}
+
+/* ── BEHEER SECTIE ───────────────────────────── */
+#beheer-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.beheer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.beheer-header h2 {
+  font-size: 1.6rem;
+}
+
+.beheer-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--light-grey);
+  padding-bottom: 1rem;
+}
+
+.beheer-tab {
+  padding: 0.45rem 1.2rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  cursor: pointer;
+  color: var(--grey);
+  background: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.beheer-tab:focus,
+.beheer-tab:target {
+  background: var(--orange);
+  color: var(--white);
+  outline: none;
+}
+
+/* ── BEHEER GERECHT RIJEN ────────────────────── */
+.beheer-item {
+  background: var(--light-grey);
+  border-radius: 18px;
+  padding: 1rem 1.4rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.beheer-item-emoji {
+  font-size: 1.8rem;
+}
+
+.beheer-item-info {
+  flex: 1;
+}
+
+.beheer-item-info h4 {
+  font-size: 0.95rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.beheer-item-info span {
+  font-size: 0.8rem;
+  color: var(--grey);
+}
+
+.beheer-item-prijs {
+  color: var(--orange);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ── FORMULIER TOEVOEGEN ─────────────────────── */
+.add-form-box {
+  background: var(--light-grey);
+  border-radius: 20px;
+  padding: 1.8rem;
+  margin-top: 1.8rem;
+}
+
+.add-form-box h4 {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+/* ── BEVESTIGING BLOK ────────────────────────── */
+.bevestiging {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--light-grey);
+  border-radius: var(--radius-card);
+  margin-top: 1.5rem;
+}
+
+.bevestiging-icon {
+  font-size: 3rem;
+  margin-bottom: 0.8rem;
+}
+
+.bevestiging h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ── HAMBURGER (bestel) — standaard verborgen ── */
+.header__hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  color: var(--dark);
+}
+
+/* ── RESPONSIEF ──────────────────────────────── */
+@media (max-width: 960px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .items-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hamburger tonen */
+  .header__hamburger {
+    display: block;
+  }
+
+  /* Acties verbergen */
+  .header-actions {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 1rem;
+    background: var(--white);
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    flex-direction: column;
+    gap: 0.8rem;
+    min-width: 180px;
+    z-index: 200;
+  }
+
+  /* CSS-only hamburger */
+  .nav-toggle-input {
+    display: none;
+  }
+
+  #nav-toggle:checked ~ .header-actions {
+    display: flex;
+  }
+}
