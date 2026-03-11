@@ -86,7 +86,7 @@
   <header>
     <div class="header-inner">
       <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
-      <a href="index.html" class="logo">廣州 <span>Guangzhou Foods</span></a>
+      <a href="index.php" class="logo">廣州 <span>Guangzhou Foods</span></a>
       <label for="nav-toggle" class="header__hamburger" aria-label="Menu openen">☰</label>
       <div class="header-actions">
         <a href="#login-section" class="btn-secondary" style="font-size:0.85rem; padding:0.5rem 1.1rem;">🔐 Beheer</a>

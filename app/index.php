@@ -1,3 +1,36 @@
+<?php
+// $host = 'db';
+// $db = 'mydatabase';
+// $user = 'user';
+// $password = 'password';
+// $charset = 'utf8mb4';
+
+// $opties = [
+//   PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+//   PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+//   PDO::ATTR_EMULATE_PREPARES => false,
+// ];
+
+// $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+
+// try {
+//   $pdo = new PDO($dsn, $user, $password, $opties);
+//   echo "Database connectie gelukt <br/>";
+// } catch (PDOException $e) {
+//   echo $e ->getMessage();
+//   die("Sorry, database probleem");
+// }
+
+// $sql = "SELECT * FROM studenten WHERE leeftijd > 16";
+// $statement = $pdo->prepare($sql);
+// $statement->execute();
+// $studenten = $statement->fetchAll();
+// echo "<pre>";
+// print_r($studenten);
+// echo "</pre>";
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -36,7 +69,7 @@
           <li><a href="#over-ons" class="header__nav-link">Over ons</a></li>
           <li><a href="#menu" class="header__nav-link">Menu</a></li>
           <li><a href="#contact" class="header__nav-link">Contact</a></li>
-          <li><a href="bestel.html" class="btn-primary header__nav-link">Bestel nu</a></li>
+          <li><a href="bestel.php" class="btn-primary header__nav-link">Bestel nu</a></li>
         </ul>
       </nav>
 
@@ -63,7 +96,7 @@
       </p>
 
       <div class="hero-actions">
-        <a href="bestel.html" class="btn-primary">Online bestellen</a>
+        <a href="bestel.php" class="btn-primary">Online bestellen</a>
         <a href="#menu" class="btn-secondary">Bekijk menu</a>
       </div>
     </div>
@@ -215,7 +248,7 @@
     </div>
 
     <div class="menu-cta">
-      <a href="bestel.html" class="btn-primary">Volledig menu &amp; bestellen</a>
+      <a href="bestel.php" class="btn-primary">Volledig menu &amp; bestellen</a>
     </div>
   </section>
 
@@ -314,8 +347,8 @@
 
       <div class="footer-col">
         <h5>Bestellen</h5>
-        <a href="bestel.html">Online bestellen</a>
-        <a href="bestel.html#login-section">Medewerkers login</a>
+        <a href="bestel.php">Online bestellen</a>
+        <a href="bestel.php#login-section">Medewerkers login</a>
         <a href="#">Allergie info</a>
         <a href="#">Bezorggebied</a>
       </div>
