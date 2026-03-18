@@ -623,7 +623,7 @@
 
         <div class="checkout-section">
           <h3>Jouw gegevens</h3>
-          <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+          <form action="mailto:info@guangzhoufoods.nl" method="post" enctype="text/plain">
             <div class="form-group">
               <label for="co-naam">Naam</label>
               <input type="text" id="co-naam" name="naam" placeholder="Jouw naam" required />
@@ -859,7 +859,7 @@
           <p style="font-size:0.82rem; margin-bottom:1rem;">
             Vul het formulier in. De aanvraag wordt per e-mail verzonden naar de eigenaar.
           </p>
-          <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+          <form action="mailto:info@guangzhoufoods.nl" method="post" enctype="text/plain">
             <div class="form-row">
               <div class="form-group">
                 <label for="new-naam">Naam gerecht</label>
@@ -892,10 +892,10 @@
 
       <!-- ── RESTAURANT INFO ── -->
       <div id="panel-info" style="display:none;">
-        <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+        <form action="mailto:info@guangzhoufoods.nl" method="post" enctype="text/plain">
           <div class="form-group">
             <label>Restaurantnaam</label>
-            <input type="text" name="naam" value="Gouden Draak" />
+            <input type="text" name="naam" value="Guangzhou Foods" />
           </div>
           <div class="form-group">
             <label>Openingstijden</label>
@@ -951,7 +951,7 @@
         <!-- Nieuw account aanvragen -->
         <div class="add-form-box">
           <h4>➕ Nieuw account aanvragen</h4>
-          <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+          <form action="mailto:info@guangzhoufoods.nl" method="post" enctype="text/plain">
             <div class="form-row">
               <div class="form-group">
                 <label for="new-user">Gebruikersnaam</label>

@@ -1,33 +1,15 @@
 <?php
-// $host = 'db';
-// $db = 'mydatabase';
-// $user = 'user';
-// $password = 'password';
-// $charset = 'utf8mb4';
+$host = 'db';
+$db = 'mydatabase';
+$user = 'user';
+$password = 'password';
+$charset = 'utf8mb4';
 
-// $opties = [
-//   PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-//   PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-//   PDO::ATTR_EMULATE_PREPARES => false,
-// ];
-
-// $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
-// try {
-//   $pdo = new PDO($dsn, $user, $password, $opties);
-//   echo "Database connectie gelukt <br/>";
-// } catch (PDOException $e) {
-//   echo $e ->getMessage();
-//   die("Sorry, database probleem");
-// }
-
-// $sql = "SELECT * FROM studenten WHERE leeftijd > 16";
-// $statement = $pdo->prepare($sql);
-// $statement->execute();
-// $studenten = $statement->fetchAll();
-// echo "<pre>";
-// print_r($studenten);
-// echo "</pre>";
+$opties = [
+  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+  PDO::ATTR_EMULATE_PREPARES => false,
+];
 ?>
 
 
@@ -48,7 +30,6 @@
 </head>
 
 <body>
-
   <!-- ════════════════════════════════════════
        HEADER
   ════════════════════════════════════════ -->
@@ -292,14 +273,14 @@
           <div class="icon-circle">✉️</div>
           <div>
             <h4>E-mail</h4>
-            <p>info@GuangzhouFoods.nl</p>
+            <p>info@guangzhoufoods.nl</p>
           </div>
         </div>
       </div>
 
       <div class="contact-form-box">
         <h3>Stuur een bericht</h3>
-        <form action="mailto:info@goudendraak.nl" method="post" enctype="text/plain">
+        <form action="mailto:info@guangzhoufoods.nl" method="post" enctype="text/plain">
           <div class="form-group">
             <label for="naam">Naam</label>
             <input type="text" id="naam" name="naam" placeholder="Jouw naam" required />
