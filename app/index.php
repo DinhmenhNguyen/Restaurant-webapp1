@@ -219,7 +219,7 @@
     </div>
 
     <div class="menu-cta">
-      <a href="bestel.php" class="btn-primary">Volledig menu &amp; bestellen</a>
+      <a href="bestel.php" class="btn-primary">Volledig menu</a>
     </div>
   </section>
 
