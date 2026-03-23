@@ -1,11 +1,6 @@
 <?php
-// Start van PHP code blok aan het begin van het bestand
-
-// Inclusief het database.php bestand dat de database connectie bevat
-// include_once zorgt ervoor dat het bestand maar één keer wordt geladen, ook al wordt het meerdere keren aangeroepen
+// Inclusief database connectie bestand
 include_once 'database.php';
-
-// Einde van de initiële PHP code, nu volgt HTML
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +9,7 @@ include_once 'database.php';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GuangzhouFoods</title>
+  <title>Login - GuangzhouFoods</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -31,14 +26,30 @@ include_once 'database.php';
 
     /* ── Verberg bestelsectie standaard ─────── */
     #bestel-sectie {
+      display: none;
+    }
+
+    #login-options {
       display: block;
+    }
+
+    #login-section {
+      display: none;
     }
 
     #beheer-section {
       display: none;
     }
 
-    /* ── :target toont beheer ──────── */
+    /* ── :target toont login opties, login of beheer ──────── */
+    #login-options:target {
+      display: block;
+    }
+
+    #login-section:target {
+      display: block;
+    }
+
     #beheer-section:target {
       display: block;
     }
@@ -86,111 +97,75 @@ include_once 'database.php';
   ════════════════════════════════════════ -->
   <header>
     <div class="header-inner">
-      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
-      <a href="index.php" class="logo">廣州 <span>Guangzhou Foods</span></a>
-      <label for="nav-toggle" class="header__hamburger" aria-label="Menu openen">☰</label>
+      <a href="bestel.php" class="logo">廣州 <span>Guangzhou Foods</span></a>
       <div class="header-actions">
-        <a href="login.php" class="btn-primary" style="font-size:0.85rem; padding:0.5rem 1.1rem;">🔑 Login</a>
+        <a href="bestel.php" class="btn-secondary" style="font-size:0.85rem; padding:0.5rem 1.1rem;">← Terug naar bestellen</a>
       </div>
     </div>
   </header>
 
 
   <!-- ════════════════════════════════════════
-       HOOFDPAGINA — BESTELGEDEELTE
+       LOGIN OPTIES (via :target)
   ════════════════════════════════════════ -->
-  <div id="bestel-sectie">
-    <main>
+  <section id="login-options">
+    <div class="login-box">
+      <p class="login-logo">GuangzhouFoods</p>
+      <h2>Login</h2>
+      <p>Kies je inlogtype</p>
 
-      <!-- ── LINKER KOLOM: MENU ── -->
-      <section class="menu-section">
+      <div class="login-options-grid">
+        <a href="#login-section" class="login-option-btn">
+          <span class="login-option-icon">👨‍💼</span>
+          <span class="login-option-text">Eigenaar inloggen</span>
+        </a>
+        <a href="bestel.php" class="login-option-btn">
+          <span class="login-option-icon">👤</span>
+          <span class="login-option-text">Klant</span>
+        </a>
+      </div>
 
-        <div class="menu-hero">
-          <h1>Kies jouw gerecht</h1>
-          <p>Vers bereid, snel bezorgd — of haal af bij ons restaurant.</p>
+      <p style="margin-top:1.2rem; font-size:0.82rem;">
+        <a href="bestel.php" style="color:var(--orange);">← Terug naar bestellen</a>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       LOGIN SCHERM (via :target)
+  ════════════════════════════════════════ -->
+  <section id="login-section">
+    <div class="login-box">
+      <p class="login-logo">GuangzhouFoods</p>
+      <h2>Medewerkers login</h2>
+      <p>Exclusief voor personeel en eigenaar</p>
+
+      <!--
+        Puur HTML/CSS login:
+        Er is geen server-side verificatie mogelijk zonder JS/backend.
+        Dit formulier stuurt naar het beheer-scherm via een anker.
+        In productie koppel je dit aan een backend (PHP, Node, etc.)
+      -->
+      <form action="#beheer-section" method="get">
+        <div class="form-group">
+          <label for="login-user">Gebruikersnaam</label>
+          <input type="text" id="login-user" name="user" placeholder="gebruikersnaam" required />
         </div>
-
-        <form name="zoek-formulier" action="bestel.php" method="GET" class="search-form">
-          <label for="zoek-input">Zoek jouw favoriete gerecht</label>
-          <div class="search-input-group">
-            <input type="text" id="zoek-input" name="zoek" placeholder="Bv. nasi goreng, dim sum, loempia...">
-            <button type="submit">🔍 Zoeken</button>
-            <a href="bestel.php" class="reset-button" title="Wis zoekopdracht en toon alle gerechten">🔄 Alle gerechten</a>
-          </div>
-        </form>
-
-        <div class="items-grid">
-          <?php
-          // Controleert of er een variabele is en dat deze niet leeg is
-          $hasUserSearched = isset($_GET['zoek']) && $_GET['zoek'] !== "";
-
-          if ($hasUserSearched) {
-            $searchString = $_GET['zoek'];
-            $searchStringWildCard = "%" . $searchString . "%";
-
-            // Dit Selecteert alle dingen van Gerechten
-            $sql = "SELECT * FROM Gerechten WHERE naam LIKE :zoek1 OR beschrijving LIKE :zoek2";
-
-            // Bereid de SQL statement voor met PDO
-            // PDO = het connectie van database tot php
-            $statement = $pdo->prepare($sql);
-
-            // De waardes $searchStringWildCard aan zoek1 en 2 binden
-            $statement->bindParam(':zoek1', $searchStringWildCard);
-            $statement->bindParam(':zoek2', $searchStringWildCard);
-
-            // Voer de query uit
-            $statement->execute();
-
-          } else {
-            // Eenvoudige SQL query om alle gerechten op te halen
-            $sql = "SELECT * FROM Gerechten";
-
-            // Bereid de SQL statement voor
-            $statement = $pdo->prepare($sql);
-
-            // Voer de query uit
-            $statement->execute();
-          }
-
-          // Haal alle resultaten op als een array van arrays
-          $gerechten = $statement->fetchAll();
-
-          foreach ($gerechten as $gerecht) {
-            $naam = $gerecht['naam'];
-            $beschrijving = $gerecht['beschrijving'];
-            $prijs = $gerecht['prijs'];
-            $afbeelding = $gerecht['foto'];
-
-            // Controleer of er een afbeelding is opgegeven
-            if ($afbeelding == "") {
-              // Als er geen afbeelding is komt deze placeholder afbeelding
-              $afbeelding = "https://via.placeholder.com/400x300?text=Geen+Afbeelding";
-            } else {
-              // Als er wel een afbeelding is krijgt het de afbeelding van de database
-              $afbeelding = $afbeelding;
-            }
-
-            // Structuur van de eet kaartjes
-            echo "<div class='item-card'>";
-            echo "<img class=item-img src='$afbeelding' alt='$naam' class='card-img'>";
-            echo "<div class='item-body'>";
-            echo "<h3>$naam</h3>";
-            echo "<p>$beschrijving</p>";
-            echo "<div class='item-footer'>";
-            echo "<span class='item-price'>€ $prijs</span>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-          }
-
-          // Einde van PHP code blok
-          ?>
+        <div class="form-group">
+          <label for="login-pass">Wachtwoord</label>
+          <input type="password" id="login-pass" name="pass" placeholder="••••••••" required />
         </div>
-      </section><!-- einde menu-section -->
+        <button type="submit" class="btn-primary" style="width:100%; padding:0.8rem;">
+          Inloggen
+        </button>
+      </form>
 
-    </main>
-  </div><!-- einde #bestel-sectie -->
+      <p style="margin-top:1.2rem; font-size:0.82rem;">
+        <a href="#login-options" style="color:var(--orange);">← Terug naar login keuze</a>
+      </p>
+    </div>
+  </section>
 
 
   <!-- ════════════════════════════════════════
@@ -199,7 +174,7 @@ include_once 'database.php';
   <section id="beheer-section">
     <div class="beheer-header">
       <h2>🛠 Beheer paneel</h2>
-      <a href="#bestel-sectie" class="btn-secondary" style="font-size:0.85rem;">← Terug naar bestellen</a>
+      <a href="bestel.php" class="btn-secondary" style="font-size:0.85rem;">← Terug naar bestellen</a>
     </div>
 
     <!-- Tab navigatie via ankers -->

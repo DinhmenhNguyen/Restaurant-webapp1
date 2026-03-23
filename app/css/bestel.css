@@ -73,6 +73,215 @@ main {
   font-size: clamp(0.85rem, 2vw, 0.95rem);
 }
 
+/* ── ZOEK FORMULIER ─────────────────────────── */
+.search-form {
+  background: linear-gradient(135deg, var(--white) 0%, var(--light-grey) 100%);
+  border-radius: var(--radius-card);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  box-shadow: 0 8px 32px rgba(232, 116, 42, 0.1);
+  border: 1px solid rgba(232, 116, 42, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.search-form::before {
+  content: '🔍';
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.search-form label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.2rem;
+  color: var(--dark);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: block;
+  position: relative;
+}
+
+.search-form .search-input-group {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.search-form input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 1rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--dark);
+  background: var(--white);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.search-form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 4px rgba(232, 116, 42, 0.2), 0 4px 16px rgba(232, 116, 42, 0.15);
+  transform: translateY(-1px);
+}
+
+.search-form input[type="text"]::placeholder {
+  color: var(--grey);
+  font-style: italic;
+}
+
+.search-form button {
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--gold) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(232, 116, 42, 0.3);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.search-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.search-form button:hover {
+  background: linear-gradient(135deg, var(--gold) 0%, #ff8c42 100%);
+  box-shadow: 0 6px 20px rgba(232, 116, 42, 0.4);
+  transform: translateY(-2px);
+}
+
+.search-form button:hover::before {
+  left: 100%;
+}
+
+.search-form button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(232, 116, 42, 0.3);
+}
+
+.search-form .reset-button {
+  padding: 1rem 1.5rem;
+  background: var(--mid-grey);
+  color: var(--dark);
+  border: 2px solid var(--mid-grey);
+  border-radius: var(--radius-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.search-form .reset-button:hover {
+  background: var(--grey);
+  border-color: var(--grey);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-form .reset-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    padding: 1.5rem 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+  
+  .search-form::before {
+    font-size: 1.2rem;
+    top: 0.8rem;
+    right: 1rem;
+  }
+  
+  .search-form label {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .search-form .search-input-group {
+    gap: 0.5rem;
+  }
+  
+  .search-form input[type="text"] {
+    min-width: 150px;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .search-form button {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .search-form .reset-button {
+    padding: 0.9rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form {
+    padding: 1.2rem 1rem;
+  }
+  
+  .search-form label {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .search-form .search-input-group {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .search-form input[type="text"] {
+    min-width: unset;
+    width: 100%;
+  }
+  
+  .search-form button,
+  .search-form .reset-button {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
 /* ── MENU CATEGORIETITEL ─────────────────────── */
 .category-title {
   font-family: 'Noto Serif SC', serif;
