@@ -407,106 +407,113 @@ main {
 }
 
 /* ── TOEVOEGEN KNOP ──────────────────────────── */
-/* (Verwijderd - winkelmandje niet meer nodig) */
-
-/* ── LOGIN PANEEL ────────────────────────────── */
-#login-options,
-#login-section,
-#customer-login-section {
-  background: var(--light-grey);
-  padding: 2rem 1rem;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (min-width: 768px) {
-  #login-options,
-  #login-section {
-    padding: 5rem 2rem;
-  }
-}
-
-.login-box {
-  background: var(--white);
-  border-radius: 32px;
-  padding: 2rem 1.5rem;
-  width: 100%;
-  max-width: 420px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-  text-align: center;
-}
-
-@media (min-width: 768px) {
-  .login-box {
-    padding: 3rem 2.5rem;
-  }
-}
-
-.login-logo {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 1.3rem;
-  color: var(--orange);
-  margin-bottom: 0.3rem;
-}
-
-.login-box h2 {
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  margin-bottom: 0.4rem;
-}
-
-.login-box>p {
-  font-size: 0.88rem;
-  margin-bottom: 1.8rem;
-}
-
-.login-box .form-group {
-  text-align: left;
-}
-
-/* ── LOGIN OPTIES GRID ──────────────────────── */
-.login-options-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.login-option-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  padding: 1.5rem 1rem;
-  background: var(--light-grey);
-  border: 2px solid var(--mid-grey);
-  border-radius: 16px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-  color: var(--dark);
-}
-
-.login-option-btn:hover {
-  background: var(--orange);
-  border-color: var(--orange);
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(232, 116, 42, 0.2);
-}
-
-.login-option-icon {
-  font-size: 2rem;
-}
-
-.login-option-text {
-  font-size: 0.9rem;
-  font-weight: 500;
-}
+/* (Verwijderd - login CSS verplaatst naar login.css) */
 
 /* ── BEHEER SECTIE ───────────────────────────── */
+#beheer-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 768px) {
+  #beheer-section {
+    padding: 3rem 2rem;
+  }
+}
+
+.beheer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.beheer-header h2 {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+}
+
+.beheer-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--light-grey);
+  padding-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.beheer-tab {
+  padding: 0.45rem 1.2rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  cursor: pointer;
+  color: var(--grey);
+  background: none;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.beheer-tab:focus,
+.beheer-tab:target {
+  background: var(--orange);
+  color: var(--white);
+  outline: none;
+}
+
+/* ── BEHEER GERECHT RIJEN ────────────────────── */
+.beheer-item {
+  background: var(--light-grey);
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .beheer-item {
+    padding: 1rem 1.4rem;
+    flex-wrap: nowrap;
+  }
+}
+
+.beheer-item-emoji {
+  font-size: 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .beheer-item-emoji {
+    font-size: 1.8rem;
+  }
+}
+
+.beheer-item-info {
+  flex: 1;
+}
+
+.beheer-item-info h4 {
+  font-size: 0.95rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.beheer-item-info span {
+  font-size: 0.8rem;
+  color: var(--grey);
+}
+
+.beheer-item-prijs {
+  color: var(--orange);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ── FORMULIER TOEVOEGEN ─────────────────────── */
 #beheer-section {
   max-width: 1200px;
   margin: 0 auto;

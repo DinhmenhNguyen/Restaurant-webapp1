@@ -1,0 +1,162 @@
+/* ═══════════════════════════════════════════════
+   Guangzhou Foods — Login stijlen
+   ═══════════════════════════════════════════════ */
+
+/* ── LOGIN PANEEL ────────────────────────────── */
+#login-section,
+#customer-login-section {
+  background: var(--light-grey);
+  padding: 1rem 1rem;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  #login-section {
+    padding: 5rem 2rem;
+  }
+}
+
+.title-login {
+    color: var(--gold);
+}
+
+.login-box {
+  background: var(--white);
+  border-radius: 32px;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 420px; 
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .login-box {
+    padding: 3rem 2.5rem;
+  }
+}
+
+.login-logo {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.3rem;
+  color: var(--orange);
+  margin-bottom: 0.3rem;
+}
+
+.login-box h2 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  margin-bottom: 0.4rem;
+}
+
+.login-box>p {
+  font-size: 0.88rem;
+  margin-bottom: 1.8rem;
+}
+
+.login-box .form-group {
+  text-align: left;
+}
+
+/* ── LOGIN OPTIES GRID ──────────────────────── */
+.login-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-option-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.5rem 1rem;
+  background: var(--light-grey);
+  border: 2px solid var(--mid-grey);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.login-option-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(232, 116, 42, 0.2);
+}
+
+.login-option-icon {
+  font-size: 2rem;
+}
+
+.login-option-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════
+   INLINE: CSS-only interacties
+   (:target trick voor login/beheer scherm)
+══════════════════════════════════════════ */
+
+ /* ── Verberg bestelsectie standaard ─────── */
+ #bestel-sectie {
+   display: none;
+ }
+
+ #login-section {
+   display: flex;
+ }
+
+ #beheer-section {
+   display: none;
+ }
+
+ /* ── :target toont login of beheer ──────── */
+ #beheer-section:target {
+   display: block;
+ }
+
+ #login-section:target {
+   display: block;
+ }
+
+ /* ── Actieve tab via :target ─────────────── */
+ #tab-menu:target~.beheer-content #panel-menu {
+   display: block;
+ }
+
+ #tab-info:target~.beheer-content #panel-info {
+   display: block;
+ }
+
+ #tab-users:target~.beheer-content #panel-users {
+   display: block;
+ }
+
+ /* standaard eerste tab zichtbaar */
+ #panel-menu {
+   display: block;
+ }
+
+ #panel-info {
+   display: none;
+ }
+
+ #panel-users {
+   display: none;
+ }
+
+
+ /* ── Beheer tab actief markering ─────────── */
+ a.beheer-tab-link:target {
+   background: var(--orange);
+   color: var(--white);
+ }

@@ -22,60 +22,7 @@ include_once 'database.php';
     rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/bestel.css" />
-
-  <style>
-    /* ══════════════════════════════════════════
-       INLINE: CSS-only interacties
-       (:target trick voor login/beheer scherm)
-    ══════════════════════════════════════════ */
-
-    /* ── Verberg bestelsectie standaard ─────── */
-    #bestel-sectie {
-      display: block;
-    }
-
-    #beheer-section {
-      display: none;
-    }
-
-    /* ── :target toont beheer ──────── */
-    #beheer-section:target {
-      display: block;
-    }
-
-    /* ── Actieve tab via :target ─────────────── */
-    #tab-menu:target~.beheer-content #panel-menu {
-      display: block;
-    }
-
-    #tab-info:target~.beheer-content #panel-info {
-      display: block;
-    }
-
-    #tab-users:target~.beheer-content #panel-users {
-      display: block;
-    }
-
-    /* standaard eerste tab zichtbaar */
-    #panel-menu {
-      display: block;
-    }
-
-    #panel-info {
-      display: none;
-    }
-
-    #panel-users {
-      display: none;
-    }
-
-
-    /* ── Beheer tab actief markering ─────────── */
-    a.beheer-tab-link:target {
-      background: var(--orange);
-      color: var(--white);
-    }
-  </style>
+  <link rel="stylesheet" href="css/bestel-inline.css" />
 </head>
 
 <body>
@@ -202,13 +149,7 @@ include_once 'database.php';
       <a href="#bestel-sectie" class="btn-secondary" style="font-size:0.85rem;">← Terug naar bestellen</a>
     </div>
 
-    <!-- Tab navigatie via ankers -->
-    <nav class="beheer-tabs" aria-label="Beheer secties">
-      <a href="#panel-menu" class="beheer-tab btn-primary">Menu beheren</a>
-      <a href="#panel-info" class="beheer-tab btn-secondary">Restaurant info</a>
-      <a href="#panel-users" class="beheer-tab btn-secondary">Medewerkers</a>
-    </nav>
-
+    <!-- Tab navigatie verwijderd (alleen content zichtbaar) -->
     <div class="beheer-content">
 
       <!-- ── MENU BEHEER ── -->

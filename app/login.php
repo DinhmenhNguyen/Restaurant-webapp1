@@ -17,76 +17,7 @@ include_once 'database.php';
     rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/bestel.css" />
-
-  <style>
-    /* ══════════════════════════════════════════
-       INLINE: CSS-only interacties
-       (:target trick voor login/beheer scherm)
-    ══════════════════════════════════════════ */
-
-    /* ── Verberg bestelsectie standaard ─────── */
-    #bestel-sectie {
-      display: none;
-    }
-
-    #login-options {
-      display: block;
-    }
-
-    #login-section {
-      display: none;
-    }
-
-    #beheer-section {
-      display: none;
-    }
-
-    /* ── :target toont login opties, login of beheer ──────── */
-    #login-options:target {
-      display: block;
-    }
-
-    #login-section:target {
-      display: block;
-    }
-
-    #beheer-section:target {
-      display: block;
-    }
-
-    /* ── Actieve tab via :target ─────────────── */
-    #tab-menu:target~.beheer-content #panel-menu {
-      display: block;
-    }
-
-    #tab-info:target~.beheer-content #panel-info {
-      display: block;
-    }
-
-    #tab-users:target~.beheer-content #panel-users {
-      display: block;
-    }
-
-    /* standaard eerste tab zichtbaar */
-    #panel-menu {
-      display: block;
-    }
-
-    #panel-info {
-      display: none;
-    }
-
-    #panel-users {
-      display: none;
-    }
-
-
-    /* ── Beheer tab actief markering ─────────── */
-    a.beheer-tab-link:target {
-      background: var(--orange);
-      color: var(--white);
-    }
-  </style>
+  <link rel="stylesheet" href="css/login.css" />
 </head>
 
 <body>
@@ -106,40 +37,13 @@ include_once 'database.php';
 
 
   <!-- ════════════════════════════════════════
-       LOGIN OPTIES (via :target)
-  ════════════════════════════════════════ -->
-  <section id="login-options">
-    <div class="login-box">
-      <p class="login-logo">GuangzhouFoods</p>
-      <h2>Login</h2>
-      <p>Kies je inlogtype</p>
-
-      <div class="login-options-grid">
-        <a href="#login-section" class="login-option-btn">
-          <span class="login-option-icon">👨‍💼</span>
-          <span class="login-option-text">Eigenaar inloggen</span>
-        </a>
-        <a href="bestel.php" class="login-option-btn">
-          <span class="login-option-icon">👤</span>
-          <span class="login-option-text">Klant</span>
-        </a>
-      </div>
-
-      <p style="margin-top:1.2rem; font-size:0.82rem;">
-        <a href="bestel.php" style="color:var(--orange);">← Terug naar bestellen</a>
-      </p>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════
-       LOGIN SCHERM (via :target)
+       LOGIN SCHERM
   ════════════════════════════════════════ -->
   <section id="login-section">
     <div class="login-box">
-      <p class="login-logo">GuangzhouFoods</p>
-      <h2>Medewerkers login</h2>
-      <p>Exclusief voor personeel en eigenaar</p>
+      <p class="login-logo">廣州 <span class="title-login">GuangzhouFoods</span></p>
+      <h2>Medewerkers Login</h2>
+      <p>Voer uw gebruikersnaam en wachtwoord in</p>
 
       <!--
         Puur HTML/CSS login:
@@ -160,10 +64,6 @@ include_once 'database.php';
           Inloggen
         </button>
       </form>
-
-      <p style="margin-top:1.2rem; font-size:0.82rem;">
-        <a href="#login-options" style="color:var(--orange);">← Terug naar login keuze</a>
-      </p>
     </div>
   </section>
 
@@ -177,13 +77,7 @@ include_once 'database.php';
       <a href="bestel.php" class="btn-secondary" style="font-size:0.85rem;">← Terug naar bestellen</a>
     </div>
 
-    <!-- Tab navigatie via ankers -->
-    <nav class="beheer-tabs" aria-label="Beheer secties">
-      <a href="#panel-menu" class="beheer-tab btn-primary">Menu beheren</a>
-      <a href="#panel-info" class="beheer-tab btn-secondary">Restaurant info</a>
-      <a href="#panel-users" class="beheer-tab btn-secondary">Medewerkers</a>
-    </nav>
-
+    <!-- Tab navigatie verwijderd (alleen content zichtbaar) -->
     <div class="beheer-content">
 
       <!-- ── MENU BEHEER ── -->
@@ -214,7 +108,7 @@ include_once 'database.php';
         <div class="beheer-item">
           <span class="beheer-item-emoji">🍢</span>
           <div class="beheer-item-info">
-            <h4>Loempia (2 stuks)</h4>
+            <h4>Loempia (6 stuks)</h4>
             <span>Starters · Knapperige loempia met zoetzure saus</span>
           </div>
           <span class="beheer-item-prijs">€ 6,00</span>

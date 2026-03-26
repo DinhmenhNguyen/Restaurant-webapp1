@@ -1,0 +1,51 @@
+/* ══════════════════════════════════════════
+   INLINE: CSS-only interacties
+   (:target trick voor login/beheer scherm)
+══════════════════════════════════════════ */
+
+ /* ── Verberg bestelsectie standaard ─────── */
+ #bestel-sectie {
+   display: block;
+ }
+
+ #beheer-section {
+   display: none;
+ }
+
+ /* ── :target toont beheer ──────── */
+ #beheer-section:target {
+   display: block;
+ }
+
+ /* ── Actieve tab via :target ─────────────── */
+ #tab-menu:target~.beheer-content #panel-menu {
+   display: block;
+ }
+
+ #tab-info:target~.beheer-content #panel-info {
+   display: block;
+ }
+
+ #tab-users:target~.beheer-content #panel-users {
+   display: block;
+ }
+
+ /* standaard eerste tab zichtbaar */
+ #panel-menu {
+   display: block;
+ }
+
+ #panel-info {
+   display: none;
+ }
+
+ #panel-users {
+   display: none;
+ }
+
+
+ /* ── Beheer tab actief markering ─────────── */
+ a.beheer-tab-link:target {
+   background: var(--orange);
+   color: var(--white);
+ }
