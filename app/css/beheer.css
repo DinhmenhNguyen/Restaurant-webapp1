@@ -1,0 +1,194 @@
+/* ═══════════════════════════════════════════════
+   Guangzhou Foods — Beheer paneel stijlen
+   ═══════════════════════════════════════════════ */
+
+/* ── BEHEER HEADER ───────────────────────────── */
+.beheer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--mid-grey);
+}
+
+.beheer-header h2 {
+  font-size: 1.8rem;
+  color: var(--dark);
+  margin: 0;
+}
+
+/* ── BEHEER CONTENT ──────────────────────────── */
+.beheer-content {
+  display: grid;
+  gap: 2rem;
+}
+
+/* ── BEHEER ITEMS (gerechten lijst) ─────────── */
+.beheer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+.beheer-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.beheer-item-emoji {
+  font-size: 1.5rem;
+  width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.beheer-item-info {
+  flex: 1;
+  min-width: 200px;
+}
+
+.beheer-item-info h4 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1rem;
+  color: var(--dark);
+}
+
+.beheer-item-info span {
+  font-size: 0.85rem;
+  color: var(--grey);
+}
+
+.beheer-item-prijs {
+  font-weight: 600;
+  color: var(--orange);
+  font-size: 1rem;
+  white-space: nowrap;
+  margin-right: 1rem;
+}
+
+/* ── BEHEER ITEM ACTIONS (bewerk & verwijder buttons) ─── */
+.beheer-item-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-bewerk,
+.btn-verwijder {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-bewerk {
+  background: #f1c40f;
+  color: #333;
+}
+
+.btn-bewerk:hover {
+  background: #f39c12;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-verwijder {
+  background: #e74c3c;
+  color: var(--white);
+}
+
+.btn-verwijder:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ── FORMULIEREN ────────────────────────────── */
+.add-form-box {
+  background: var(--very-light-grey);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.add-form-box h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: var(--dark);
+}
+
+.add-form-box p {
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  color: var(--grey);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── PANELS (voor tabs als die worden toegevoegd) ── */
+#panel-menu,
+#panel-info,
+#panel-users {
+  display: block;
+}
+
+/* Verberg panels standaard (voor toekomstige tab functionaliteit) */
+#panel-info,
+#panel-users {
+  display: none;
+}
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 768px) {
+  .beheer-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .beheer-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .beheer-item-emoji {
+    width: auto;
+  }
+
+  .beheer-item-prijs {
+    margin-right: 0;
+  }
+
+  .beheer-item-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -13,9 +13,7 @@ $opties = [
 
 try {
   $pdo = new PDO("mysql:host=$host;dbname=$db;charset=$charset", $user, $password, $opties);
-  echo "werkt";
 } catch (PDOException $e) {
   throw new PDOException($e->getMessage(), (int)$e->getCode());
-  echo "niet";
 }
 ?>

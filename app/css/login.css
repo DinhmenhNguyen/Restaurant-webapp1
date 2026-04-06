@@ -28,7 +28,7 @@
   border-radius: 32px;
   padding: 2rem 1.5rem;
   width: 100%;
-  max-width: 420px; 
+  max-width: 420px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
@@ -100,63 +100,3 @@
   font-size: 0.9rem;
   font-weight: 500;
 }
-
-/* ══════════════════════════════════════════
-   INLINE: CSS-only interacties
-   (:target trick voor login/beheer scherm)
-══════════════════════════════════════════ */
-
- /* ── Verberg bestelsectie standaard ─────── */
- #bestel-sectie {
-   display: none;
- }
-
- #login-section {
-   display: flex;
- }
-
- #beheer-section {
-   display: none;
- }
-
- /* ── :target toont login of beheer ──────── */
- #beheer-section:target {
-   display: block;
- }
-
- #login-section:target {
-   display: block;
- }
-
- /* ── Actieve tab via :target ─────────────── */
- #tab-menu:target~.beheer-content #panel-menu {
-   display: block;
- }
-
- #tab-info:target~.beheer-content #panel-info {
-   display: block;
- }
-
- #tab-users:target~.beheer-content #panel-users {
-   display: block;
- }
-
- /* standaard eerste tab zichtbaar */
- #panel-menu {
-   display: block;
- }
-
- #panel-info {
-   display: none;
- }
-
- #panel-users {
-   display: none;
- }
-
-
- /* ── Beheer tab actief markering ─────────── */
- a.beheer-tab-link:target {
-   background: var(--orange);
-   color: var(--white);
- }
