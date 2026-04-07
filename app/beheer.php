@@ -1,6 +1,20 @@
 <?php
-// Vereenvoudigde versie zonder database voorlopig
 include_once 'database.php';
+
+// Verwijder een gerecht wanneer het formulier met delete_id is ingediend.
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
+    $deleteId = $_POST['delete_id'];
+    
+    // SQL-DELETE query om het gerecht uit de tabel te verwijderen.
+    $sql = "DELETE FROM Gerechten WHERE id = :id";
+    $statement = $pdo->prepare($sql);
+    $statement->bindParam(':id', $deleteId);
+    $statement->execute();
+    
+    // Herlaad de beheerpagina nadat het verwijderen is voltooid.
+    header('Location: beheer.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +130,12 @@ include_once 'database.php';
             echo "<h3>$naam</h3>";
             echo "<p>$beschrijving</p>";
             echo "<div class='item-footer'>";
-            echo "<span class='item-price'>€ $prijs<a href='gerechtaanpassen.php?id=$id' class='btn-item-action btn-edit' title='Bewerken'>✏️</a><button class='btn-item-action btn-delete' title='Verwijderen'>🗑</button></span>";
+            echo "<span class='item-price'>€ $prijs<a href='gerechtaanpassen.php?id=$id' class='btn-item-action btn-edit' title='Bewerken'>✏️</a>";
+            echo "<form method='post' style='display:inline; margin:0; padding:0;'>";
+            echo "<input type='hidden' name='delete_id' value='$id'>";
+            echo "<button type='submit' class='btn-item-action btn-delete' title='Verwijderen' onclick=\"return confirm('Weet je zeker dat je dit gerecht wilt verwijderen?');\">🗑</button>";
+            echo "</form>";
+            echo "</span>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -126,6 +145,9 @@ include_once 'database.php';
           ?>
         </div>
 
+        <div class="add-form-box">
+          <a href="gerechttoevoegen.php" class="btn-primary">➕ Nieuw gerecht toevoegen</a>
+        </div>
 
       <!-- ── RESTAURANT INFO ── -->
       <div id="panel-info" style="display:none;">
@@ -209,4 +231,4 @@ include_once 'database.php';
 
 </body>
 
-</html>
+</html> 

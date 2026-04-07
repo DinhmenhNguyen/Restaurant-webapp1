@@ -1,4 +1,5 @@
 <?php
+  // Laad database.php zodat de databaseverbinding overal beschikbaar is.
   include_once 'database.php';
 ?>
 
