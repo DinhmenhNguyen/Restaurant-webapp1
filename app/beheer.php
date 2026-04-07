@@ -94,6 +94,7 @@ include_once 'database.php';
           $gerechten = $statement->fetchAll();
 
           foreach ($gerechten as $gerecht) {
+            $id = $gerecht['id'];
             $naam = $gerecht['naam'];
             $beschrijving = $gerecht['beschrijving'];
             $prijs = $gerecht['prijs'];
@@ -115,7 +116,7 @@ include_once 'database.php';
             echo "<h3>$naam</h3>";
             echo "<p>$beschrijving</p>";
             echo "<div class='item-footer'>";
-            echo "<span class='item-price'>€ $prijs<button>E</button><button>X</button></span>";
+            echo "<span class='item-price'>€ $prijs<a href='gerechtaanpassen.php?id=$id' class='btn-item-action btn-edit' title='Bewerken'>✏️</a><button class='btn-item-action btn-delete' title='Verwijderen'>🗑</button></span>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
