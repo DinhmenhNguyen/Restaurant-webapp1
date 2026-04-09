@@ -2,6 +2,12 @@
 // Laad de database connectie via PDO uit database.php
 include_once 'database.php';
 
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'beheer') {
+  header("Location: login.php");
+}
+
 // Berichten die we later kunnen tonen in de HTML
 $successMessage = '';
 $errorMessage = '';

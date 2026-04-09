@@ -2,6 +2,12 @@
 // Laad de database connectie voor het ophalen en bijwerken van gerechtgegevens.
 include_once 'database.php';
 
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'beheer') {
+  header("Location: login.php");
+}
+
 // Het ID van het gerecht dat moet worden aangepast, uit de URL (?id=...)
 $gerechtId = $_GET['id'];
 
