@@ -1,15 +1,32 @@
 <?php
+session_start();
 include_once 'database.php';
 
 $username = "user";
 $password = "password";
 
+
 // Controleer of het formulier is verzonden met een POST request.
+// if (isset($_POST["username"]) && isset($_POST["password"]) !== "") {
+//   // Vergelijk de ingevulde gebruikersnaam en wachtwoord met de hardcoded waarden.
+//   if ($_POST["username"] == $username && $_POST["password"] == $password) {
+//     // Als de gegevens kloppen, stuur door naar de beheerpagina.
+//     header("Location: beheer.php");
+//   }
+// }
+
 if (isset($_POST["username"]) && isset($_POST["password"]) !== "") {
-  // Vergelijk de ingevulde gebruikersnaam en wachtwoord met de hardcoded waarden.
   if ($_POST["username"] == $username && $_POST["password"] == $password) {
-    // Als de gegevens kloppen, stuur door naar de beheerpagina.
-    header("Location: beheer.php");
+
+
+    $role = 'beheer';
+    
+    $_SESSION['role'] = $role;
+
+    if ($role == 'beheer') {
+      header("Location: beheer.php");
+      exit();
+    }
   }
 }
 
