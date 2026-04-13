@@ -18,14 +18,12 @@ $password = "password";
 if (isset($_POST["username"]) && isset($_POST["password"]) !== "") {
   if ($_POST["username"] == $username && $_POST["password"] == $password) {
 
-
     $role = 'beheer';
-    
+
     $_SESSION['role'] = $role;
 
     if ($role == 'beheer') {
       header("Location: beheer.php");
-      exit();
     }
   }
 }
@@ -82,14 +80,14 @@ if (isset($_POST["username"]) && isset($_POST["password"]) !== "") {
       -->
 
 
-      <form name="login" action="login.php" method="post">
+      <form name="login" action="" method="POST">
         <div class="form-group">
           <label for="login-user">Gebruikersnaam</label>
-          <input method="post" type="text" id="login-user" name="username" placeholder="gebruikersnaam" required />
+          <input  type="text" id="login-user" name="username" placeholder="gebruikersnaam" required />
         </div>
         <div class="form-group">
           <label for="login-pass">Wachtwoord</label>
-          <input method="post" type="password" id="login-pass" name="password" placeholder="••••••••" required />
+          <input type="password" id="login-pass" name="password" placeholder="••••••••" required />
         </div>
         <button type="submit" class="btn-primary" style="width:100%; padding:0.8rem;">
           Inloggen

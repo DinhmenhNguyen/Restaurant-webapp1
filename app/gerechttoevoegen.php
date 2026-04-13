@@ -1,8 +1,6 @@
 <?php
-// Laad de database connectie via PDO uit database.php
-include_once 'database.php';
-
 session_start();
+include_once 'database.php';
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'beheer') {
   header("Location: login.php");

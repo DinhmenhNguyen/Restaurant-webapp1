@@ -76,36 +76,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
         <!-- Bestaande gerechten (statisch overzicht) -->
         <div class="items-grid">
           <?php
-          // Controleert of er een variabele is en dat deze niet leeg is
-          $hasUserSearched = isset($_GET['zoek']) && $_GET['zoek'] !== "";
+          // Eenvoudige SQL query om alle gerechten op te halen
+          $sql = "SELECT * FROM Gerechten";
 
-          if ($hasUserSearched) {
-            $searchString = $_GET['zoek'];
-            $searchStringWildCard = "%" . $searchString . "%";
+          // Bereid de SQL statement voor
+          $statement = $pdo->prepare($sql);
 
-            // Dit Selecteert alle dingen van Gerechten
-            $sql = "SELECT * FROM Gerechten WHERE naam LIKE :zoek1 OR beschrijving LIKE :zoek2";
+          // Voer de query uit
+          $statement->execute();
 
-            // Bereid de SQL statement voor met PDO
-            // PDO = het connectie van database tot php
-            $statement = $pdo->prepare($sql);
-
-            // De waardes $searchStringWildCard aan zoek1 en 2 binden
-            $statement->bindParam(':zoek1', $searchStringWildCard);
-            $statement->bindParam(':zoek2', $searchStringWildCard);
-
-            // Voer de query uit
-            $statement->execute();
-          } else {
-            // Eenvoudige SQL query om alle gerechten op te halen
-            $sql = "SELECT * FROM Gerechten";
-
-            // Bereid de SQL statement voor
-            $statement = $pdo->prepare($sql);
-
-            // Voer de query uit
-            $statement->execute();
-          }
 
           // Haal alle resultaten op als een array van arrays
           $gerechten = $statement->fetchAll();
@@ -151,84 +130,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
         <div class="add-form-box">
           <a href="gerechttoevoegen.php" class="btn-primary">➕ Nieuw gerecht toevoegen</a>
         </div>
-
-        <!-- ── RESTAURANT INFO ── -->
-        <div id="panel-info" style="display:none;">
-          <form action="mailto:info@guangzhoufoods.nl" method="post" enctype="text/plain">
-            <div class="form-group">
-              <label>Restaurantnaam</label>
-              <input type="text" name="naam" value="Guangzhou Foods" />
-            </div>
-            <div class="form-group">
-              <label>Openingstijden</label>
-              <input type="text" name="openingstijden" value="Ma–Vr: 11:00–22:00 | Za–Zo: 12:00–23:00" />
-            </div>
-            <div class="form-group">
-              <label>Bezorgkosten (€)</label>
-              <input type="number" name="bezorgkosten" value="2.50" step="0.10" />
-            </div>
-            <div class="form-group">
-              <label>Min. bestelbedrag (€)</label>
-              <input type="number" name="minimum" value="15.00" step="0.50" />
-            </div>
-            <div class="form-group">
-              <label>Bezorggebied (postcodes)</label>
-              <input type="text" name="postcodes" placeholder="bv. 3011, 3012, 3013" />
-            </div>
-            <button type="submit" class="btn-primary">Wijzigingen doorsturen</button>
-          </form>
-        </div>
-
-
-        <!-- ── MEDEWERKERS ── -->
-        <div id="panel-users" style="display:none;">
-          <p style="font-size:0.88rem; color:var(--grey); margin-bottom:1.2rem;">
-            Huidig personeel met toegang tot het beheer paneel.
-          </p>
-
-          <div class="beheer-item">
-            <span class="beheer-item-emoji">👤</span>
-            <div class="beheer-item-info">
-              <h4>eigenaar</h4>
-              <span>⭐ Eigenaar — volledige toegang</span>
-            </div>
-          </div>
-
-          <div class="beheer-item">
-            <span class="beheer-item-emoji">👤</span>
-            <div class="beheer-item-info">
-              <h4>chef</h4>
-              <span>Chef-kok — menu beheer</span>
-            </div>
-          </div>
-
-          <div class="beheer-item">
-            <span class="beheer-item-emoji">👤</span>
-            <div class="beheer-item-info">
-              <h4>medewerker</h4>
-              <span>Medewerker — bestellingen inzien</span>
-            </div>
-          </div>
-
-          <!-- Nieuw account aanvragen -->
-          <div class="add-form-box">
-            <h4>➕ Nieuw account aanvragen</h4>
-            <form action="mailto:info@guangzhoufoods.nl" method="post" enctype="text/plain">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="new-user">Gebruikersnaam</label>
-                  <input type="text" id="new-user" name="gebruikersnaam" placeholder="naam" required />
-                </div>
-                <div class="form-group">
-                  <label for="new-role">Rol</label>
-                  <input type="text" id="new-role" name="rol" placeholder="bv. Medewerker" />
-                </div>
-              </div>
-              <button type="submit" class="btn-primary">Aanvraag versturen</button>
-            </form>
-          </div>
-        </div>
-
       </div><!-- einde beheer-content -->
   </section><!-- einde #beheer-section -->
 

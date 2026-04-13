@@ -1,8 +1,6 @@
-﻿<?php
-// Laad de database connectie voor het ophalen en bijwerken van gerechtgegevens.
-include_once 'database.php';
-
+<?php
 session_start();
+include_once 'database.php';
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'beheer') {
   header("Location: login.php");
@@ -13,20 +11,20 @@ $gerechtId = $_GET['id'];
 
 // Als het formulier is ingediend, werk dan het gerecht bij in de database.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $naam = $_POST['naam'];
-    $omschrijving = $_POST['omschrijving'];
-    $prijs = $_POST['prijs'];
-    $afbeelding = $_POST['afbeelding'];
+  $naam = $_POST['naam'];
+  $omschrijving = $_POST['omschrijving'];
+  $prijs = $_POST['prijs'];
+  $afbeelding = $_POST['afbeelding'];
 
-    // SQL UPDATE query om de bestaande rij te wijzigen.
-    $updatesql = "UPDATE Gerechten SET naam = :naam, beschrijving = :beschrijving, prijs = :prijs, foto = :foto WHERE id = :id";
-    $statement = $pdo->prepare($updatesql);
-    $statement->bindParam(':naam', $naam);
-    $statement->bindParam(':beschrijving', $omschrijving);
-    $statement->bindParam(':prijs', $prijs);
-    $statement->bindParam(':foto', $afbeelding);
-    $statement->bindParam(':id', $gerechtId);
-    $statement->execute();
+  // SQL UPDATE query om de bestaande rij te wijzigen.
+  $updatesql = "UPDATE Gerechten SET naam = :naam, beschrijving = :beschrijving, prijs = :prijs, foto = :foto WHERE id = :id";
+  $statement = $pdo->prepare($updatesql);
+  $statement->bindParam(':naam', $naam);
+  $statement->bindParam(':beschrijving', $omschrijving);
+  $statement->bindParam(':prijs', $prijs);
+  $statement->bindParam(':foto', $afbeelding);
+  $statement->bindParam(':id', $gerechtId);
+  $statement->execute();
 }
 
 // Laad het huidige gerecht om de velden vooraf in te vullen in het formulier.
@@ -35,7 +33,7 @@ $sql = "SELECT * FROM Gerechten WHERE id = :id";
 $statement = $pdo->prepare($sql);
 $statement->bindParam(':id', $gerechtId);
 $statement->execute();
-$gerecht = $statement->fetch();
+$gerecht = $statement->fetch();  
 
 ?>
 <!DOCTYPE html>
@@ -62,7 +60,7 @@ $gerecht = $statement->fetch();
 
         <label>
           Omschrijving
-          <textarea name="omschrijving" required placeholder="Beschrijf het gerecht"><?php echo $gerecht['beschrijving'];?></textarea>
+          <textarea name="omschrijving" required placeholder="Beschrijf het gerecht"><?php echo $gerecht['beschrijving']; ?></textarea>
         </label>
 
         <label>
