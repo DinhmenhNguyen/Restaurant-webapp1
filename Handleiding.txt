@@ -1,0 +1,126 @@
+Handleiding:
+Docker desktop downloaden
+
+Projectmap
+
+app/(alles erin met .php enzo)
+
+Downloaden
+
+Download de volledige app/ map naar je downloads.
+
+---
+
+## Stap 2 — Hoe de website wordt gekoppeld (volumes)
+
+De website bestanden worden via een **volume mount** gekoppeld aan de PHP container.
+Dit betekent dat de bestanden op jouw computer direct beschikbaar zijn in de container — zonder dat je de container opnieuw hoeft te bouwen als je een bestand aanpast.
+
+In `docker-compose.yml` staat dit geconfigureerd als:
+
+```yaml
+volumes:
+  - .:/var/www/html
+```
+
+**Uitleg:**
+- `.` = de huidige map op jouw computer (de `app/` map)
+- `/var/www/html` = de map waar Apache in de container de website leest
+
+Voor de database zijn er twee volumes:
+
+```yaml
+volumes:
+  - db_data:/var/lib/mysql
+  - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+```
+
+| Volume | Uitleg |
+|--------|--------|
+| `db_data:/var/lib/mysql` | Slaat de databasedata op zodat die bewaard blijft als de container herstart |
+| `./db.sql:/docker-entrypoint-initdb.d/db.sql` | Importeert automatisch de database bij de eerste keer opstarten |
+
+---
+
+## Stap 3 — Container bouwen (build)
+
+Open een terminal in de `app/` map en voer uit:
+
+```bash
+docker compose build
+```
+
+Dit bouwt de PHP container op basis van de `Dockerfile`:
+
+```dockerfile
+FROM php:8.4-apache
+RUN docker-php-ext-install pdo pdo_mysql
+```
+
+**Wat dit doet:**
+- Haalt het officiële PHP 8.4 image op met Apache
+- Installeert de `pdo` en `pdo_mysql` extensies zodat PHP verbinding kan maken met de database
+
+---
+
+## Stap 4 — Containers opstarten (run)
+
+Start alle containers op de achtergrond:
+
+```bash
+docker compose up -d
+```
+
+Docker start nu twee containers:
+
+| Container | Omschrijving | Poort |
+|-----------|--------------|-------|
+| `php_web` | PHP 8.4 + Apache webserver | `8098` |
+| `mariadb` | MariaDB 10.6 database | intern |
+
+De `-d` vlag zorgt dat de containers op de achtergrond draaien.
+
+Bij de **eerste keer opstarten** importeert MariaDB automatisch het bestand `db.sql` met alle tabellen en gegevens.
+
+---
+
+## Stap 5 — Website openen
+
+Open je browser en ga naar:
+
+```
+http://localhost:8098
+```
+
+---
+
+## Containers stoppen
+
+```bash
+docker compose down
+```
+
+> **Let op:** gebruik `docker compose down -v` als je ook de opgeslagen databasedata wilt verwijderen.
+
+---
+
+## Veelvoorkomende problemen
+
+### Poort 8098 is al in gebruik
+Pas in `docker-compose.yml` de poort aan, bijvoorbeeld naar `8099:80`.
+
+### Database tabellen bestaan niet
+Dit kan gebeuren als het volume al bestond vóór de import. Verwijder het volume en start opnieuw:
+
+```bash
+docker compose down -v
+docker compose up -d
+```
+
+### PDO driver fout
+Zorg dat de container opnieuw gebouwd wordt met:
+
+```bash
+docker compose build --no-cache
+docker compose up -d
+```
